@@ -15,6 +15,7 @@
 		08D333E32A9C459100CE6571 /* LetsEatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D333E22A9C459100CE6571 /* LetsEatUITests.swift */; };
 		08D333E52A9C459100CE6571 /* LetsEatUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D333E42A9C459100CE6571 /* LetsEatUITestsLaunchTests.swift */; };
 		08D333F22A9C464900CE6571 /* PlanListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D333F12A9C464900CE6571 /* PlanListView.swift */; };
+		08D333F42A9C47C700CE6571 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D333F32A9C47C700CE6571 /* MessageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		08D333E22A9C459100CE6571 /* LetsEatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetsEatUITests.swift; sourceTree = "<group>"; };
 		08D333E42A9C459100CE6571 /* LetsEatUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetsEatUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		08D333F12A9C464900CE6571 /* PlanListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanListView.swift; sourceTree = "<group>"; };
+		08D333F32A9C47C700CE6571 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 				08D333CB2A9C459100CE6571 /* Assets.xcassets */,
 				08D333CD2A9C459100CE6571 /* Preview Content */,
 				08D333F12A9C464900CE6571 /* PlanListView.swift */,
+				08D333F32A9C47C700CE6571 /* MessageView.swift */,
 			);
 			path = LetsEat;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08D333F42A9C47C700CE6571 /* MessageView.swift in Sources */,
 				08D333CA2A9C459000CE6571 /* ContentView.swift in Sources */,
 				08D333C82A9C459000CE6571 /* LetsEatApp.swift in Sources */,
 				08D333F22A9C464900CE6571 /* PlanListView.swift in Sources */,
