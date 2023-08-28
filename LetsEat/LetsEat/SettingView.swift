@@ -86,7 +86,7 @@ struct SettingView: View {
                 }
             }
         }
-        .navigationTitle("Settings")
+        .navigationTitle("설정")
     }
 }
 

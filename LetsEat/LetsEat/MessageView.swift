@@ -48,8 +48,8 @@ struct MessageView: View {
                 //                                .background(.ultraThinMaterial)
             }
             .onDelete(perform: removeItem)
+            .navigationTitle("알림")
         }
-        .navigationTitle("알림")
         .toolbar {
             EditButton()
         }
