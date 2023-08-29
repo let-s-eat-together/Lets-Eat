@@ -7,6 +7,14 @@
 
 import SwiftUI
 
+extension Date {
+    func calcDate(from endDate: Date) -> Int {
+        let Comp = Calendar.current.dateComponents([.day], from: Date(), to: endDate)
+        guard let d = Comp.day else { return 0 }
+        return d
+    }
+}
+
 struct Plan: Hashable {
     var name: String
     var startDate: Date
@@ -54,8 +62,7 @@ struct PlanListView: View {
                     VStack(alignment: .leading) {
                         Text(data.name)
                             .font(.system(size: 23))
-                        
-                        Text("약속까지 \(calcDate(from: data.endDate))일 남았습니다.")
+                        Text("약속까지 \(Date().calcDate(from: data.endDate))일 남았습니다.")
                             .font(.system(.caption2))
                             .foregroundColor(.gray)
                     }
@@ -63,19 +70,61 @@ struct PlanListView: View {
                     Spacer()
                     
                     Spacer()
+                    
+                    stingButton()
+                    
+//                    extendButton()
+                    
                 }
                 .listRowSeparator(.hidden)
             }
         }
         .scrollContentBackground(.hidden)
     }
-    
-    func calcDate(from endDate: Date) -> Int {
-        let Comp = Calendar.current.dateComponents([.day], from: Date(), to: endDate)
-        guard let d = Comp.day else { return 0 }
-        return d
-    }
+}
 
+struct stingButton: View {
+    @State private var isSting: Bool = false
+    
+    var body: some View {
+        Button {
+            isSting.toggle()
+        } label: {
+            Text("찌르기")
+                .font(.system(.caption))
+                .foregroundColor(.primary)
+        }
+        .buttonStyle(.bordered)
+        .buttonBorderShape(.roundedRectangle(radius: 10))
+        .alert("test", isPresented: $isSting) {
+            Button("네") {
+                sendMessage()
+            }
+            Button("아니오", role: .cancel) {
+                
+            }
+        } message: {
+            Text("찌르겠습니까?")
+        }
+    }
+    
+    func sendMessage() {
+        print("send Message!")
+    }
+}
+
+struct extendButton: View {
+    var body: some View {
+        Button {
+            
+        } label: {
+            Text("연장하기")
+                .font(.system(.caption))
+                .foregroundColor(.primary)
+        }
+        .buttonStyle(.bordered)
+        .buttonBorderShape(.roundedRectangle(radius: 10))
+    }
 }
 
 struct PlanListView_Previews: PreviewProvider {
