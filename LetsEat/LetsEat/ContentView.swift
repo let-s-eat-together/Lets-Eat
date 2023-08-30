@@ -49,7 +49,6 @@ struct topView: View {
                 
                 NavigationLink {
                     SettingView()
-                        
                 } label: {
                     Image(systemName: "gearshape.fill")
                         .resizable()
@@ -57,9 +56,6 @@ struct topView: View {
                         .frame(width: 35, height: 35)
                         .foregroundColor(.primary)
                 }
-
-
-
             }
         }
         .padding(.horizontal, 20)
@@ -69,12 +65,6 @@ struct topView: View {
 struct floatingButton: View {
     @State private var isMake: Bool = false
     @State var planDate: Date
-    
-    var dateFormatter: DateFormatter {
-         let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-         return formatter
-    }
     
     var body: some View {
         HStack {
@@ -90,31 +80,7 @@ struct floatingButton: View {
                     .foregroundColor(.primary)
             }
             .sheet(isPresented: $isMake) {
-                VStack(alignment: .center) {
-                    
-                    DatePicker(selection: $planDate, in: Date()..., displayedComponents: .date) {
-                        Text("날짜를 선택해주세요")
-                    }
-                    .padding()
-                    
-                    
-                    Text("시작 : \(Date(), formatter: dateFormatter)")
-                        .padding()
-                    
-                    Text("종료 : \(planDate, formatter: dateFormatter)")
-                        .padding()
-                    Button {
-                        isMake.toggle()
-                        makePlan()
-                    } label: {
-                        Text("약속 만들기")
-                    }
-                    .padding()
-                    .buttonStyle(.bordered)
-                    .buttonBorderShape(.roundedRectangle(radius: 10))
-
-                    
-                }
+                MakePlanModalView(isPresented: $isMake)
             }
         }
     }

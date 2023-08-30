@@ -13,6 +13,20 @@ extension Date {
         guard let d = Comp.day else { return 0 }
         return d
     }
+    
+//    func dateString() -> DateFormatter {
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "yy년 mm월 dd일"
+//        dateFormatter.timeZone = .current
+//        
+//        return dateFormatter
+//    }
+    
+    var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "YY년 MM월 dd일"
+        return formatter
+    }
 }
 
 struct Plan: Hashable {
@@ -22,31 +36,11 @@ struct Plan: Hashable {
 }
 
 struct PlanListView: View {
-    var dummyData: [Plan] =
-    [Plan(name: "조단현",
-          startDate: Calendar.current.date(from: DateComponents(year: 2023, month: 6, day: 1)) ?? Date.now,
-          endDate: Calendar.current.date(from: DateComponents(year: 2023, month: 9, day: 1)) ?? Date.now),
-     Plan(name: "이현재",
-          startDate: Calendar.current.date(from: DateComponents(year: 2023, month: 6, day: 1)) ?? Date.now,
-          endDate: Calendar.current.date(from: DateComponents(year: 2023, month: 10, day: 1)) ?? Date.now),
-     Plan(name: "이호수",
-          startDate: Calendar.current.date(from: DateComponents(year: 2023, month: 6, day: 1)) ?? Date.now,
-          endDate: Calendar.current.date(from: DateComponents(year: 2023, month: 10, day: 30)) ?? Date.now),
-     Plan(name: "이현민",
-          startDate: Calendar.current.date(from: DateComponents(year: 2023, month: 6, day: 1)) ?? Date.now,
-          endDate: Calendar.current.date(from: DateComponents(year: 2023, month: 11, day: 1)) ?? Date.now),
-     Plan(name: "김성민",
-          startDate: Calendar.current.date(from: DateComponents(year: 2023, month: 6, day: 1)) ?? Date.now,
-          endDate: Calendar.current.date(from: DateComponents(year: 2023, month: 11, day: 10)) ?? Date.now),
-     Plan(name: "서은서",
-          startDate: Calendar.current.date(from: DateComponents(year: 2023, month: 6, day: 1)) ?? Date.now,
-          endDate: Calendar.current.date(from: DateComponents(year: 2023, month: 11, day: 30)) ?? Date.now),
-     Plan(name: "송정현",
-          startDate: Calendar.current.date(from: DateComponents(year: 2023, month: 6, day: 1)) ?? Date.now,
-          endDate: Calendar.current.date(from: DateComponents(year: 2023, month: 12, day: 25)) ?? Date.now)]
+    @State var dataManager = DataManager.shared
+    
     var body: some View {
         Form {
-            ForEach(dummyData, id: \.self) {
+            ForEach(dataManager.getPlanDummyData(), id: \.self) {
                 data in
                 
                 HStack {
@@ -72,12 +66,14 @@ struct PlanListView: View {
                     Spacer()
                     
                     stingButton()
-                    
+                        .padding()
+                        
 //                    extendButton()
                     
                 }
                 .listRowSeparator(.hidden)
             }
+
         }
         .scrollContentBackground(.hidden)
     }

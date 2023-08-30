@@ -17,6 +17,9 @@
 		08D333F22A9C464900CE6571 /* PlanListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D333F12A9C464900CE6571 /* PlanListView.swift */; };
 		08D333F42A9C47C700CE6571 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D333F32A9C47C700CE6571 /* MessageView.swift */; };
 		08D333F62A9C481900CE6571 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D333F52A9C481900CE6571 /* SettingView.swift */; };
+		08D333F82A9C92D000CE6571 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D333F72A9C92D000CE6571 /* DataManager.swift */; };
+		08D333FA2A9C983900CE6571 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D333F92A9C983900CE6571 /* Message.swift */; };
+		08D333FC2A9DB7B600CE6571 /* MakePlanModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D333FB2A9DB7B600CE6571 /* MakePlanModalView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +53,9 @@
 		08D333F12A9C464900CE6571 /* PlanListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanListView.swift; sourceTree = "<group>"; };
 		08D333F32A9C47C700CE6571 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		08D333F52A9C481900CE6571 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		08D333F72A9C92D000CE6571 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		08D333F92A9C983900CE6571 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		08D333FB2A9DB7B600CE6571 /* MakePlanModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakePlanModalView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,11 +108,14 @@
 			children = (
 				08D333C72A9C459000CE6571 /* LetsEatApp.swift */,
 				08D333C92A9C459000CE6571 /* ContentView.swift */,
-				08D333CB2A9C459100CE6571 /* Assets.xcassets */,
-				08D333CD2A9C459100CE6571 /* Preview Content */,
 				08D333F12A9C464900CE6571 /* PlanListView.swift */,
 				08D333F32A9C47C700CE6571 /* MessageView.swift */,
 				08D333F52A9C481900CE6571 /* SettingView.swift */,
+				08D333CB2A9C459100CE6571 /* Assets.xcassets */,
+				08D333CD2A9C459100CE6571 /* Preview Content */,
+				08D333F72A9C92D000CE6571 /* DataManager.swift */,
+				08D333F92A9C983900CE6571 /* Message.swift */,
+				08D333FB2A9DB7B600CE6571 /* MakePlanModalView.swift */,
 			);
 			path = LetsEat;
 			sourceTree = "<group>";
@@ -267,10 +276,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				08D333F42A9C47C700CE6571 /* MessageView.swift in Sources */,
+				08D333F82A9C92D000CE6571 /* DataManager.swift in Sources */,
 				08D333F62A9C481900CE6571 /* SettingView.swift in Sources */,
+				08D333FC2A9DB7B600CE6571 /* MakePlanModalView.swift in Sources */,
 				08D333CA2A9C459000CE6571 /* ContentView.swift in Sources */,
 				08D333C82A9C459000CE6571 /* LetsEatApp.swift in Sources */,
 				08D333F22A9C464900CE6571 /* PlanListView.swift in Sources */,
+				08D333FA2A9C983900CE6571 /* Message.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

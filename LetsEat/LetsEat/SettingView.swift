@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct SettingView: View {
+    @State private var isAlarm: Bool = false
+    
     var body: some View {
         VStack(alignment: .leading) {
             
-            Spacer()
+
             
             //                Text("Settings")
             //                    .padding()
@@ -23,7 +25,7 @@ struct SettingView: View {
                 Image("discord")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 150, height: 150)
+                    .frame(width: 100, height: 100)
                     .clipShape(Circle())
                     .padding()
                 
@@ -32,7 +34,8 @@ struct SettingView: View {
                 
                 VStack(alignment: .leading) {
                     Text("Hyunjae Lee")
-                        .bold()
+                        .font(.title2)
+//                        .bold()
 //                        Text("Student")
 //                            .font(.caption)
 //                            .foregroundColor(.gray)
@@ -55,15 +58,14 @@ struct SettingView: View {
                         Text("Personal information detail")
                     } label: {
                         Image(systemName: "person")
-                        Text("Personal Information")
-                        
+                        Text("프로필 설정")
                     }
-                    NavigationLink {
-                        Text("Change Password detail")
-                    } label: {
-                        Image(systemName: "lock")
-                        Text("Change Password")
-                    }
+//                    NavigationLink {
+//                        Text("Change Password detail")
+//                    } label: {
+//                        Image(systemName: "lock")
+//                        Text("Change Password")
+//                    }
                     NavigationLink {
                         Text("Personal information detail")
                     } label: {
@@ -78,11 +80,21 @@ struct SettingView: View {
                     }
                 }
                 Section {
-                    NavigationLink {
-                        Text("Logout View")
-                    } label: {
-                        Label("Logout", systemImage: "door.left.hand.open")
+////                    NavigationLink {
+////                        Text("Logout View")
+////                    } label: {
+////                        Label("Logout", systemImage: "door.left.hand.open")
+//                    }
+                }
+                
+                Section {
+                    Toggle(isOn: $isAlarm) {
+                        Text("푸시 알림")
                     }
+                    Toggle(isOn: $isAlarm) {
+                        Text("푸시 알림")
+                    }
+                
                 }
             }
         }
