@@ -69,9 +69,9 @@ struct floatingButton: View {
     var body: some View {
         HStack {
             Spacer()
-            
-            Button {
-                isMake.toggle()
+ 
+            NavigationLink {
+                MakePlanView()
             } label: {
                 Image(systemName: "plus.circle.fill")
                     .resizable()
@@ -79,14 +79,7 @@ struct floatingButton: View {
                     .frame(width: 40, height: 40)
                     .foregroundColor(.primary)
             }
-            .sheet(isPresented: $isMake) {
-                MakePlanModalView(isPresented: $isMake)
-            }
         }
-    }
-    
-    func makePlan() {
-        
     }
 }
 
