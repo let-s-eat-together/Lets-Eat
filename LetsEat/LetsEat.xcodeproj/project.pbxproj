@@ -21,6 +21,7 @@
 		08D333F82A9C92D000CE6571 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D333F72A9C92D000CE6571 /* DataManager.swift */; };
 		08D333FA2A9C983900CE6571 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D333F92A9C983900CE6571 /* Message.swift */; };
 		08D333FC2A9DB7B600CE6571 /* MakePlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D333FB2A9DB7B600CE6571 /* MakePlanView.swift */; };
+		F3F476412AA060AC00F3E255 /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F476402AA060AC00F3E255 /* LaunchScreenView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		08D333F72A9C92D000CE6571 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		08D333F92A9C983900CE6571 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		08D333FB2A9DB7B600CE6571 /* MakePlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakePlanView.swift; sourceTree = "<group>"; };
+		F3F476402AA060AC00F3E255 /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 				08D333F92A9C983900CE6571 /* Message.swift */,
 				08D333FB2A9DB7B600CE6571 /* MakePlanView.swift */,
 				0895D2FE2AA0562100E6E74E /* QRCodeImageView.swift */,
+				F3F476402AA060AC00F3E255 /* LaunchScreenView.swift */,
 			);
 			path = LetsEat;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				08D333F62A9C481900CE6571 /* SettingView.swift in Sources */,
 				0895D2FF2AA0562100E6E74E /* QRCodeImageView.swift in Sources */,
 				08D333FC2A9DB7B600CE6571 /* MakePlanView.swift in Sources */,
+				F3F476412AA060AC00F3E255 /* LaunchScreenView.swift in Sources */,
 				08D333CA2A9C459000CE6571 /* ContentView.swift in Sources */,
 				08D333C82A9C459000CE6571 /* LetsEatApp.swift in Sources */,
 				08D333F22A9C464900CE6571 /* PlanListView.swift in Sources */,
