@@ -12,34 +12,36 @@ struct ContentView: View {
     @State var isLoginSuccess: Bool = false
     
     var body: some View {
-        ZStack {
-            VStack {
-                PlanListView()
-                    .scrollContentBackground(.hidden)
-            }
-            .zIndex(0)
-            if isLoading {
-                LaunchScreenView()
-                    .transition(.opacity)
-                    .zIndex(1)
-            } else if !isLoginSuccess {
-                GenerateNicknameView()
-                    .zIndex(1)
-            }
-        }
-        .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
-                withAnimation {
-                    let deviceId = UIDevice.current.identifierForVendor!.uuidString
-                    if login(deviceId) {
-                        // login success
-                        isLoginSuccess = true
-                    } else {
-                        signUp(deviceId)
-                    }
-                    isLoading.toggle()
+        NavigationStack {
+            ZStack {
+                VStack {
+                    PlanListView()
+                        .scrollContentBackground(.hidden)
                 }
-            })
+                .zIndex(0)
+                if isLoading {
+                    LaunchScreenView()
+                        .transition(.opacity)
+                        .zIndex(1)
+                } else if !isLoginSuccess {
+                    GenerateNicknameView()
+                        .zIndex(1)
+                }
+            }
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+                    withAnimation {
+                        let deviceId = UIDevice.current.identifierForVendor!.uuidString
+                        if login(deviceId) {
+                            // login success
+                            isLoginSuccess = true
+                        } else {
+                            signUp(deviceId)
+                        }
+                        isLoading.toggle()
+                    }
+                })
+            }
         }
     }
     
@@ -47,7 +49,7 @@ struct ContentView: View {
         //디바이스 아이디로 로그인 요청
         //있으면 유저 아이디 받아옴 -> 로그인 성공
         //없으면 -1을 받음 -> 로그인 실패, 닉네임 생성(signUp)
-        var isFailApiLogin: Bool = false // true면 닉네임 생성, false면 로그인 성공
+        let isFailApiLogin: Bool = false // true면 닉네임 생성, false면 로그인 성공
         if isFailApiLogin { // (apiLogin(deviceId)) == -1
             return false
         } else {
@@ -65,40 +67,6 @@ struct ContentView: View {
     }
 }
 
-struct GenerateNicknameView: View {
-    @State private var input: String = ""
-    var body: some View {
-        ZStack {
-            Color(.white)
-                .edgesIgnoringSafeArea(.all)
-            VStack(alignment: .leading) {
-                Spacer()
-                Text("닉네임")
-                    .font(.callout)
-                    .bold()
-                ZStack(alignment: .trailing) {
-                    TextField("닉네임을 입력해주세요...", text: $input)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                    Image(systemName: "xmark.circle.fill")
-                        .foregroundColor(.secondary)
-                        .onTapGesture {
-                            input = ""
-                        }
-                }
-                VStack(alignment: .trailing) {
-                    Text("사용가능한 닉네임입니다.")
-                        .foregroundColor(.green)
-                    Text("사용불가한 닉네임입니다.")
-                        .foregroundColor(.red)
-                }
-                Spacer()
-                Spacer()
-            }
-            .frame(width: 300)
-            .padding()
-        }
-    }
-}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
