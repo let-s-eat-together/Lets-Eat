@@ -36,78 +36,147 @@ struct Plan: Hashable {
 }
 
 struct PlanListView: View {
+    
+    @State private var showMakePlanView: Bool = false
+    @State private var isSting: Bool = false
     @State var dataManager = DataManager.shared
     
     var body: some View {
-        Form {
-            ForEach(dataManager.getPlanDummyData(), id: \.self) {
-                data in
-                
-                HStack {
-                    Image("discord")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 40, height: 40)
-                        .clipShape(Circle())
-                        .padding()
-                    
-                    Spacer()
-                    
-                    VStack(alignment: .leading) {
-                        Text(data.name)
-                            .font(.system(size: 23))
-                        Text("약속까지 \(Date().calcDate(from: data.endDate))일 남았습니다.")
-                            .font(.system(.caption2))
-                            .foregroundColor(.gray)
+        NavigationStack {
+            ZStack(alignment: .bottomTrailing) {
+                floatingButton()
+                    .padding()
+                    .zIndex(1)
+                List {
+                    ForEach(dataManager.getPlanDummyData(), id: \.self) { data in
+                        planItem(data)
                     }
-                    
-                    Spacer()
-                    
-                    Spacer()
-                    
-                    stingButton()
-                        .padding()
-                        
-//                    extendButton()
-                    
                 }
-                .listRowSeparator(.hidden)
+                .scrollContentBackground(.hidden)
+                .navigationTitle("밥 함 묵자")
+                .toolbar {
+                    NavigationLink {
+                        MessageView()
+                    } label: {
+                        Image(systemName: "bell.fill")
+                            .foregroundColor(.primary)
+                    }
+                    NavigationLink {
+                        SettingView()
+                    } label: {
+                        Image(systemName: "gearshape.fill")
+                            .foregroundColor(.primary)
+                    }
+                }
+                .zIndex(0)
             }
-
         }
-        .scrollContentBackground(.hidden)
     }
-}
-
-struct stingButton: View {
-    @State private var isSting: Bool = false
     
-    var body: some View {
+    private func makeTxt(_ day: Int) -> String {
+        if day < 0 {
+            return "약속일이 \(-day)일 지났습니다.."
+        } else {
+            return "약속까지 \(day)일 남았습니다.."
+        }
+    }
+    
+    @ViewBuilder
+    private func planItem(_ data: Plan) -> some View {
+        HStack {
+            Image("discord")
+                .resizable()
+                .scaledToFit()
+                .frame(height: 40)
+            Spacer()
+            VStack(alignment: .leading) {
+                Text(data.name)
+                    .font(.title)
+                let day = Date().calcDate(from: data.endDate)
+                let txt = makeTxt(day)
+                Text(txt)
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
+            Spacer()
+            stingButton(data)
+                .buttonStyle(.plain)
+        }
+        .padding()
+        .background(Rectangle().fill(Color("Item Color")))
+        .cornerRadius(15)
+        .shadow(color: .gray, radius: 3, x: 2, y: 2)
+    }
+    
+    @ViewBuilder
+    private func floatingButton() -> some View {
+        Button {
+            showMakePlanView.toggle()
+        } label: {
+            Image(systemName: "plus.circle.fill")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 50)
+                .foregroundColor(.primary)
+                .fullScreenCover(isPresented: $showMakePlanView) {
+                    MakePlanView()
+                }
+        }
+    }
+    
+    @ViewBuilder
+    private func stingButton(_ data: Plan) -> some View {
         Button {
             isSting.toggle()
         } label: {
-            Text("찌르기")
-                .font(.system(.caption))
+            Image(systemName: "hand.point.left.fill")
                 .foregroundColor(.primary)
-        }
-        .buttonStyle(.bordered)
-        .buttonBorderShape(.roundedRectangle(radius: 10))
-        .alert("test", isPresented: $isSting) {
-            Button("네") {
-                sendMessage()
-            }
-            Button("아니오", role: .cancel) {
                 
-            }
-        } message: {
-            Text("찌르겠습니까?")
+        }
+        .alert(isPresented: $isSting) { // 마지막 이름 나오는 버그 고치기
+            Alert(title: Text("콕 찌르기"),
+                  message: Text("\(data.name)님을 콕 찌르시겠습니까?"),
+                  primaryButton: Alert.Button.default(Text("네")) {
+                      sendMessage(to: data.name)
+                  },
+                  secondaryButton: Alert.Button.destructive(Text("아니요")))
         }
     }
     
-    func sendMessage() {
-        print("send Message!")
+    private func sendMessage(to who: String) { // 실패시 에러처리
+        print("send to \(who) 콕!")
     }
 }
+
+//struct stingButton: View {
+//    @State private var isSting: Bool = false
+//
+//    var body: some View {
+//        Button {
+//            isSting.toggle()
+//        } label: {
+//            Text("찌르기")
+//                .font(.system(.caption))
+//                .foregroundColor(.primary)
+//        }
+//        .buttonStyle(.bordered)
+//        .buttonBorderShape(.roundedRectangle(radius: 10))
+//        .alert("test", isPresented: $isSting) {
+//            Button("네") {
+//                sendMessage()
+//            }
+//            Button("아니오", role: .cancel) {
+//
+//            }
+//        } message: {
+//            Text("찌르겠습니까?")
+//        }
+//    }
+//
+//    func sendMessage() {
+//        print("send Message!")
+//    }
+//}
 
 struct extendButton: View {
     var body: some View {
