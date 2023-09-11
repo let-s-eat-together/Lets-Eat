@@ -80,10 +80,10 @@ struct SettingView: View {
                     }
                 }
                 Section {
-////                    NavigationLink {
-////                        Text("Logout View")
-////                    } label: {
-////                        Label("Logout", systemImage: "door.left.hand.open")
+//                    NavigationLink {
+//                        Text("Logout View")
+//                    } label: {
+//                        Label("Logout", systemImage: "door.left.hand.open")
 //                    }
                 }
                 
