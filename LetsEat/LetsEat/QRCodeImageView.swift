@@ -26,6 +26,7 @@ struct QRCodeImage {
 }
 
 struct QRCodeImageView: View {
+    @EnvironmentObject var appState: AppState
     @Environment(\.dismiss) private var dismiss
     
     var userId = UUID().uuidString
@@ -38,9 +39,11 @@ struct QRCodeImageView: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 200, height: 200)
+                .padding()
             
             Button {
-                dismiss()
+                appState.rootViewId = UUID()
+//                dismiss()
             } label: {
                 Text("완료")
                     .font(.system(size: 20))
@@ -55,6 +58,6 @@ struct QRCodeImageView: View {
 
 struct QRCodeImageView_Previews: PreviewProvider {
     static var previews: some View {
-        QRCodeImageView( expirationDate: .constant(Date()))
+        QRCodeImageView(expirationDate: .constant(Date()))
     }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		083A26B72AAEC84600CC37EF /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083A26B62AAEC84600CC37EF /* AppState.swift */; };
 		0895D2FF2AA0562100E6E74E /* QRCodeImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0895D2FE2AA0562100E6E74E /* QRCodeImageView.swift */; };
 		08D333C82A9C459000CE6571 /* LetsEatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D333C72A9C459000CE6571 /* LetsEatApp.swift */; };
 		08D333CA2A9C459000CE6571 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D333C92A9C459000CE6571 /* ContentView.swift */; };
@@ -42,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		083A26B52AAEC4D900CC37EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		083A26B62AAEC84600CC37EF /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		0895D2FE2AA0562100E6E74E /* QRCodeImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeImageView.swift; sourceTree = "<group>"; };
 		08D333C42A9C459000CE6571 /* LetsEat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LetsEat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08D333C72A9C459000CE6571 /* LetsEatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetsEatApp.swift; sourceTree = "<group>"; };
@@ -87,6 +90,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		083A26B82AAEC97F00CC37EF /* PlanList */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = PlanList;
+			sourceTree = "<group>";
+		};
+		083A26B92AAEC98D00CC37EF /* Message */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
+		083A26BA2AAEC99500CC37EF /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
 		0895D2FD2AA04FA000E6E74E /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +141,10 @@
 		08D333C62A9C459000CE6571 /* LetsEat */ = {
 			isa = PBXGroup;
 			children = (
+				083A26BA2AAEC99500CC37EF /* Setting */,
+				083A26B92AAEC98D00CC37EF /* Message */,
+				083A26B82AAEC97F00CC37EF /* PlanList */,
+				083A26B52AAEC4D900CC37EF /* Info.plist */,
 				0895D2FD2AA04FA000E6E74E /* Model */,
 				08D333C72A9C459000CE6571 /* LetsEatApp.swift */,
 				08D333C92A9C459000CE6571 /* ContentView.swift */,
@@ -130,6 +158,7 @@
 				08D333FB2A9DB7B600CE6571 /* MakePlanView.swift */,
 				0895D2FE2AA0562100E6E74E /* QRCodeImageView.swift */,
 				F3F476402AA060AC00F3E255 /* LaunchScreenView.swift */,
+				083A26B62AAEC84600CC37EF /* AppState.swift */,
 			);
 			path = LetsEat;
 			sourceTree = "<group>";
@@ -291,6 +320,7 @@
 			files = (
 				08D333F42A9C47C700CE6571 /* MessageView.swift in Sources */,
 				08D333F82A9C92D000CE6571 /* DataManager.swift in Sources */,
+				083A26B72AAEC84600CC37EF /* AppState.swift in Sources */,
 				08D333F62A9C481900CE6571 /* SettingView.swift in Sources */,
 				0895D2FF2AA0562100E6E74E /* QRCodeImageView.swift in Sources */,
 				08D333FC2A9DB7B600CE6571 /* MakePlanView.swift in Sources */,
@@ -460,6 +490,7 @@
 				DEVELOPMENT_TEAM = 7HY82828Q6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LetsEat/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -489,6 +520,7 @@
 				DEVELOPMENT_TEAM = 7HY82828Q6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LetsEat/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

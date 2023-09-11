@@ -19,7 +19,7 @@ struct ContentView: View {
                 }
                 VStack {
                     Spacer()
-                    floatingButton(planDate: Date())
+                    floatingButton()
                 }
                 .padding()
             }
@@ -63,13 +63,12 @@ struct topView: View {
 }
 
 struct floatingButton: View {
-    @State private var isMake: Bool = false
-    @State var planDate: Date
+    @State var planDate: Date = Date()
     
     var body: some View {
         HStack {
             Spacer()
- 
+            
             NavigationLink {
                 MakePlanView()
             } label: {
