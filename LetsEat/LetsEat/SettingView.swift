@@ -9,6 +9,10 @@ struct SettingView: View {
     @State private var editedNickname: String = ""
     @State private var isEditingNickname: Bool = false
     
+    var isNicknameValid: Bool {
+        return editedNickname.count >= 1
+    }
+    
     var body: some View {
         VStack(alignment: .leading) {
             List {
@@ -38,7 +42,9 @@ struct SettingView: View {
                         Button(action: {
                             isEditingNickname.toggle()
                             if !isEditingNickname {
-                                nickname = editedNickname
+                                if isNicknameValid {
+                                    nickname = editedNickname
+                                }
                             }
                         }) {
                             Text(isEditingNickname ? "완료" : "프로필 수정")
