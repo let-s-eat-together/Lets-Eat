@@ -12,7 +12,7 @@ struct ContentView: View {
     @State var isLoginSuccess: Bool = false
     
     var body: some View {
-        NavigationStack {
+//        NavigationStack {
             ZStack {
                 VStack {
                     PlanListView()
@@ -24,8 +24,10 @@ struct ContentView: View {
                         .transition(.opacity)
                         .zIndex(1)
                 } else if !isLoginSuccess {
-                    GenerateNicknameView()
-                        .zIndex(1)
+                    GenerateNicknameView() {
+                        isLoginSuccess = true
+                    }
+                    .zIndex(1)
                 }
             }
             .onAppear {
@@ -35,14 +37,12 @@ struct ContentView: View {
                         if login(deviceId) {
                             // login success
                             isLoginSuccess = true
-                        } else {
-                            signUp(deviceId)
                         }
                         isLoading.toggle()
                     }
                 })
             }
-        }
+//        }
     }
     
     private func login(_ deviceId: String) -> Bool{
@@ -56,14 +56,6 @@ struct ContentView: View {
             // user id 받음.. 로그인 성공이므로 ... 로그인 성공시 어떻게 해야되는지(저장된 데이터들을 가져옴?)
             return true
         }
-    }
-    
-    private func signUp(_ deviceId: String) {
-        //닉네임을 생성하고 디바이스 아이디와 함께 signUp요청
-        //유저 아이디를 받아옴 -> signUp성공과 동시에 로그인 성공
-        // let nickName = generateNickname()
-        // apiSignUp(nickName, deviceId)
-        // 이미 유저 아이디가 있는데 받는 이유?.. 로그인 성공시 어떻게 해야되는지(저장된 데이터들을 가져옴?)
     }
 }
 
