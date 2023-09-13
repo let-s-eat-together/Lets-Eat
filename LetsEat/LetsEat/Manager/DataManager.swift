@@ -39,13 +39,13 @@ class DataManager: ObservableObject {
     }
     
     func getMessageDummyData() -> [Message] {
-        return [Message(tag: .sting, name: "조단현"),
-                Message(tag: .extend, name: "이호수"),
-                Message(tag: .sting, name: "이현재"),
-                Message(tag: .request, name: "김성민"),
-                Message(tag: .sting, name: "송정현"),
-                Message(tag: .accept, name: "이현민"),
-                Message(tag: .sting, name: "서은서")]
+        return [Message(senderName: "이호수", receiverName: "조단현"),
+                Message(senderName: "이현재", receiverName: "이호수"),
+                Message(senderName: "김성민", receiverName: "이현재"),
+                Message(senderName: "송정현", receiverName: "김성민"),
+                Message(senderName: "이현민", receiverName: "송정현"),
+                Message(senderName: "서은서", receiverName: "이현민"),
+                Message(senderName: "조단현", receiverName: "서은서")]
     }
     
     init() {
