@@ -1,8 +1,9 @@
 # Lets-Eat
 
-
-기능 개발 branch
-- feat-(기능이름)
+개발 브랜치 생성
+- git clone 
+- git checkout develop
+- git branch feat-(기능이름)
 
 push
 git push origin {기능 개발 bracnch}
