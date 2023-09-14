@@ -12,10 +12,17 @@ struct LaunchScreenView: View {
         ZStack {
             Color(.orange)
                 .edgesIgnoringSafeArea(.all)
-            Image("bab")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 200)
+            VStack {
+                Image("bab")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 200)
+                HStack {
+                    Text("유저 정보를 확인 중입니다..")
+                        .foregroundColor(.gray)
+                    ProgressView()
+                }
+            }
         }
     }
 }
