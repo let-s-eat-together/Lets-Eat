@@ -11,7 +11,7 @@ import Alamofire
 struct ContentView: View {
     @State var isLoading: Bool = true
     @State var isLoginSuccess: Bool = false
-    @State var userId: String = ""
+    @State var userId: Int = -1
     
     var body: some View {
 //        NavigationStack {
@@ -51,8 +51,7 @@ struct ContentView: View {
         //디바이스 아이디로 로그인 요청
         //있으면 유저 아이디 받아옴 -> 로그인 성공
         //없으면 -1을 받음 -> 로그인 실패, 닉네임 생성(signUp)
-        var isSuccessLogin: Bool = false
-        let url = "https://abcd" //추후 url 수정
+        let url = "34.22.94.135:8080" //추후 url 수정
         let params = ["device_id":deviceId] as Dictionary
         AF.request(url,
                    method: .get,
@@ -61,17 +60,19 @@ struct ContentView: View {
                    headers: [])
         .validate(statusCode: 200..<300)
         .responseDecodable(of: Login.self) { response in
-            userId = response.value?.loginResult ?? "fail"
+            userId = response.value?.loginResult ?? -1
+            print(response.value?.loginResult)
         }
-        if userId != "fail" {
-            isSuccessLogin = true
+        if userId != -1 {
+            return true
+        } else {
+            return false
         }
-        return isSuccessLogin
     }
 }
 
 struct Login: Decodable {
-    let loginResult: String? // 실패시에 -1이라서 따로 처리해줘야함
+    let loginResult: Int?
 }
 
 
