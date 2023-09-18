@@ -13,6 +13,7 @@ struct LetsEatApp: App {
     
     var body: some Scene {
         WindowGroup {
+            
             ContentView()
                 .id(appState.rootViewId)
                 .environmentObject(appState)

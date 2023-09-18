@@ -18,6 +18,8 @@
 		085ED2E62AAF51F400A5CE24 /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085ED2E22AAF51F400A5CE24 /* LaunchScreenView.swift */; };
 		085ED2EA2AAF520F00A5CE24 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085ED2E82AAF520F00A5CE24 /* AppState.swift */; };
 		085ED2EB2AAF520F00A5CE24 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085ED2E92AAF520F00A5CE24 /* DataManager.swift */; };
+		08B608102AB5CB6A00542C4C /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B6080F2AB5CB6A00542C4C /* CameraView.swift */; };
+		08B608132AB7DCA100542C4C /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 08B608122AB7DCA100542C4C /* CodeScanner */; };
 		08D333C82A9C459000CE6571 /* LetsEatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D333C72A9C459000CE6571 /* LetsEatApp.swift */; };
 		08D333CA2A9C459000CE6571 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D333C92A9C459000CE6571 /* ContentView.swift */; };
 		08D333CC2A9C459100CE6571 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08D333CB2A9C459100CE6571 /* Assets.xcassets */; };
@@ -55,6 +57,7 @@
 		085ED2E32AAF51F400A5CE24 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		085ED2E82AAF520F00A5CE24 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		085ED2E92AAF520F00A5CE24 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		08B6080F2AB5CB6A00542C4C /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		08D333C42A9C459000CE6571 /* LetsEat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LetsEat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08D333C72A9C459000CE6571 /* LetsEatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetsEatApp.swift; sourceTree = "<group>"; };
 		08D333C92A9C459000CE6571 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -70,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08B608132AB7DCA100542C4C /* CodeScanner in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,6 +148,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		08B6080C2AB5CAAD00542C4C /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				08B6080F2AB5CB6A00542C4C /* CameraView.swift */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
 		08D333BB2A9C458F00CE6571 = {
 			isa = PBXGroup;
 			children = (
@@ -165,6 +177,7 @@
 		08D333C62A9C459000CE6571 /* LetsEat */ = {
 			isa = PBXGroup;
 			children = (
+				08B6080C2AB5CAAD00542C4C /* Camera */,
 				085ED2EC2AAF521700A5CE24 /* Manager */,
 				085ED2E72AAF51FF00A5CE24 /* LaunchView */,
 				083A26BA2AAEC99500CC37EF /* Setting */,
@@ -204,6 +217,9 @@
 			dependencies = (
 			);
 			name = LetsEat;
+			packageProductDependencies = (
+				08B608122AB7DCA100542C4C /* CodeScanner */,
+			);
 			productName = LetsEat;
 			productReference = 08D333C42A9C459000CE6571 /* LetsEat.app */;
 			productType = "com.apple.product-type.application";
@@ -276,6 +292,9 @@
 				Base,
 			);
 			mainGroup = 08D333BB2A9C458F00CE6571;
+			packageReferences = (
+				08B608112AB7DCA100542C4C /* XCRemoteSwiftPackageReference "CodeScanner" */,
+			);
 			productRefGroup = 08D333C52A9C459000CE6571 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -332,6 +351,7 @@
 				085ED2EA2AAF520F00A5CE24 /* AppState.swift in Sources */,
 				085ED2D62AAF505600A5CE24 /* PlanListView.swift in Sources */,
 				085ED2E62AAF51F400A5CE24 /* LaunchScreenView.swift in Sources */,
+				08B608102AB5CB6A00542C4C /* CameraView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -491,6 +511,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LetsEat/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -521,6 +542,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LetsEat/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -655,6 +677,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		08B608112AB7DCA100542C4C /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		08B608122AB7DCA100542C4C /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 08B608112AB7DCA100542C4C /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 08D333BC2A9C458F00CE6571 /* Project object */;
 }

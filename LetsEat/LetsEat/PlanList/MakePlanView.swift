@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CodeScanner
 
 struct MakePlanView: View {
     @State var expirationDate: Date = Date()
@@ -25,6 +26,9 @@ struct MakePlanView: View {
                     Text("시작 : \(Date().dateFormatter.string(from: Date()))")
                     Text("종료 : \(Date().dateFormatter.string(from: expirationDate))")
                 }
+                
+                                
+                CameraView()
             }
             
             VStack(alignment: .center) {

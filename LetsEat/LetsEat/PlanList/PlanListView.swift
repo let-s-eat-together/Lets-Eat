@@ -12,8 +12,7 @@ extension Date {
         let Comp = Calendar.current.dateComponents([.day], from: Date(), to: endDate)
         guard let d = Comp.day else { return 0 }
         return d
-    }
-        
+    }    
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateFormat = "YY년 MM월 dd일"
