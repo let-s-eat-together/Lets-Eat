@@ -20,6 +20,10 @@
 		085ED2EB2AAF520F00A5CE24 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085ED2E92AAF520F00A5CE24 /* DataManager.swift */; };
 		08B608102AB5CB6A00542C4C /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B6080F2AB5CB6A00542C4C /* CameraView.swift */; };
 		08B608132AB7DCA100542C4C /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 08B608122AB7DCA100542C4C /* CodeScanner */; };
+		08B608152AB836D600542C4C /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B608142AB836D600542C4C /* SessionManager.swift */; };
+		08B608182AB8413800542C4C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 08B608172AB8413800542C4C /* Alamofire */; };
+		08B6081A2AB9300B00542C4C /* PlanManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B608192AB9300B00542C4C /* PlanManager.swift */; };
+		08B6081C2AB9318300542C4C /* MessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B6081B2AB9318300542C4C /* MessageManager.swift */; };
 		08D333C82A9C459000CE6571 /* LetsEatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D333C72A9C459000CE6571 /* LetsEatApp.swift */; };
 		08D333CA2A9C459000CE6571 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D333C92A9C459000CE6571 /* ContentView.swift */; };
 		08D333CC2A9C459100CE6571 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08D333CB2A9C459100CE6571 /* Assets.xcassets */; };
@@ -58,6 +62,9 @@
 		085ED2E82AAF520F00A5CE24 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		085ED2E92AAF520F00A5CE24 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		08B6080F2AB5CB6A00542C4C /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		08B608142AB836D600542C4C /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		08B608192AB9300B00542C4C /* PlanManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanManager.swift; sourceTree = "<group>"; };
+		08B6081B2AB9318300542C4C /* MessageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageManager.swift; sourceTree = "<group>"; };
 		08D333C42A9C459000CE6571 /* LetsEat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LetsEat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08D333C72A9C459000CE6571 /* LetsEatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetsEatApp.swift; sourceTree = "<group>"; };
 		08D333C92A9C459000CE6571 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -74,6 +81,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				08B608132AB7DCA100542C4C /* CodeScanner in Frameworks */,
+				08B608182AB8413800542C4C /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,6 +143,9 @@
 			children = (
 				085ED2E82AAF520F00A5CE24 /* AppState.swift */,
 				085ED2E92AAF520F00A5CE24 /* DataManager.swift */,
+				08B608142AB836D600542C4C /* SessionManager.swift */,
+				08B608192AB9300B00542C4C /* PlanManager.swift */,
+				08B6081B2AB9318300542C4C /* MessageManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -219,6 +230,7 @@
 			name = LetsEat;
 			packageProductDependencies = (
 				08B608122AB7DCA100542C4C /* CodeScanner */,
+				08B608172AB8413800542C4C /* Alamofire */,
 			);
 			productName = LetsEat;
 			productReference = 08D333C42A9C459000CE6571 /* LetsEat.app */;
@@ -294,6 +306,7 @@
 			mainGroup = 08D333BB2A9C458F00CE6571;
 			packageReferences = (
 				08B608112AB7DCA100542C4C /* XCRemoteSwiftPackageReference "CodeScanner" */,
+				08B608162AB8413800542C4C /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 08D333C52A9C459000CE6571 /* Products */;
 			projectDirPath = "";
@@ -341,16 +354,19 @@
 				085ED2E42AAF51F400A5CE24 /* GenerateNicknameView.swift in Sources */,
 				085ED2D42AAF505600A5CE24 /* QRCodeImageView.swift in Sources */,
 				085ED2EB2AAF520F00A5CE24 /* DataManager.swift in Sources */,
+				08B6081A2AB9300B00542C4C /* PlanManager.swift in Sources */,
 				085ED2D52AAF505600A5CE24 /* MakePlanView.swift in Sources */,
 				085ED2D02AAF502E00A5CE24 /* Plan.swift in Sources */,
 				085ED2D82AAF506000A5CE24 /* SettingView.swift in Sources */,
 				08D333CA2A9C459000CE6571 /* ContentView.swift in Sources */,
+				08B6081C2AB9318300542C4C /* MessageManager.swift in Sources */,
 				08D333C82A9C459000CE6571 /* LetsEatApp.swift in Sources */,
 				085ED2E52AAF51F400A5CE24 /* LoginView.swift in Sources */,
 				085ED2CF2AAF502E00A5CE24 /* Message.swift in Sources */,
 				085ED2EA2AAF520F00A5CE24 /* AppState.swift in Sources */,
 				085ED2D62AAF505600A5CE24 /* PlanListView.swift in Sources */,
 				085ED2E62AAF51F400A5CE24 /* LaunchScreenView.swift in Sources */,
+				08B608152AB836D600542C4C /* SessionManager.swift in Sources */,
 				08B608102AB5CB6A00542C4C /* CameraView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -517,6 +533,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -548,6 +565,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -687,6 +705,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		08B608162AB8413800542C4C /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -694,6 +720,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 08B608112AB7DCA100542C4C /* XCRemoteSwiftPackageReference "CodeScanner" */;
 			productName = CodeScanner;
+		};
+		08B608172AB8413800542C4C /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 08B608162AB8413800542C4C /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -9,11 +9,7 @@ import SwiftUI
 import CodeScanner
 
 struct CameraView: View {
-//    enum FilterType {
-//        case none, contacted, uncontacted
-//    }
-//    let filter: FilterType
-    
+    @Binding var status: String
     @State private var isShowingScanner = false
     
     
@@ -24,20 +20,9 @@ struct CameraView: View {
             Text("QR코드 스캔하기")
         }
         .sheet(isPresented: $isShowingScanner) {
-            CodeScannerView(codeTypes: [.qr], simulatedData: "Paul Hudson.com\npaul@hackingwithswift.com", completion: handleScan)
+            CodeScannerView(codeTypes: [.qr], simulatedData: "Paul Hudson\n2023-11-30 12:00:00", completion: handleScan)
         }
     }
-    
-//    var title: String {
-//        switch filter {
-//        case .none:
-//            return "Everyone"
-//        case .contacted:
-//            return "Contacted"
-//        case .uncontacted:
-//            return "Uncontacted"
-//        }
-//    }
     
     func handleScan(result: Result<ScanResult, ScanError>) {
         isShowingScanner = false
@@ -46,15 +31,14 @@ struct CameraView: View {
             let details = data.string.components(separatedBy: "\n")
             guard details.count == 2 else { return }
             
-            let plan = Plan()
-            plan.creationDate = Date.now
-            plan.otherUserName = details[0]
-            plan.expirationDate = details[1].toDate() ?? Date.now
+            var plan = Plan(creationDate: Date.now, expirationDate: details[1].toDate() ?? Date.now, otherUserName: details[0])
+            //            plan.creationDate = Date.now
+            //            plan.otherUserName = details[0]
+            //            plan.expirationDate = details[1].toDate() ?? Date.now
             print("Found code: \(data)")
         case .failure(let error):
             print("Failed Scan QR Code because of \(error)")
         }
-
     }
 }
 
@@ -81,6 +65,6 @@ extension String {
 }
 struct CameraView_Previews: PreviewProvider {
     static var previews: some View {
-        CameraView()
+        CameraView(status: .constant("11"))
     }
 }

@@ -10,6 +10,7 @@ import CodeScanner
 
 struct MakePlanView: View {
     @State var expirationDate: Date = Date()
+    @State var status: String = ""
     
     var body: some View {
         ZStack {
@@ -27,13 +28,14 @@ struct MakePlanView: View {
                     Text("종료 : \(Date().dateFormatter.string(from: expirationDate))")
                 }
                 
-                                
-                CameraView()
+                Text("\(status)")
+                CameraView(status: $status)
             }
+            
+            Spacer()
             
             VStack(alignment: .center) {
                 Spacer()
-                
                 NavigationLink {
                     QRCodeImageView(expirationDate: $expirationDate)
                 } label: {

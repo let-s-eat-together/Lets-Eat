@@ -10,39 +10,40 @@ import SwiftUI
 struct ContentView: View {
     @State var isLoading: Bool = true
     @State var isLoginSuccess: Bool = false
+    @ObservedObject var appState = AppState()
     
     var body: some View {
-//        NavigationStack {
-            ZStack {
-                VStack {
-                    PlanListView()
-                        .scrollContentBackground(.hidden)
+        ZStack {
+            VStack {
+                PlanListView()
+                    .id(appState.rootViewId)
+                    .environmentObject(appState)
+                    .scrollContentBackground(.hidden)
+            }
+            .zIndex(0)
+            if isLoading {
+                LaunchScreenView()
+                    .transition(.opacity)
+                    .zIndex(1)
+            } else if !isLoginSuccess {
+                GenerateNicknameView() {
+                    isLoginSuccess = true
                 }
-                .zIndex(0)
-                if isLoading {
-                    LaunchScreenView()
-                        .transition(.opacity)
-                        .zIndex(1)
-                } else if !isLoginSuccess {
-                    GenerateNicknameView() {
+                .zIndex(1)
+            }
+        }
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+                withAnimation {
+                    let deviceId = UIDevice.current.identifierForVendor!.uuidString
+                    if login(deviceId) {
+                        // login success
                         isLoginSuccess = true
                     }
-                    .zIndex(1)
+                    isLoading.toggle()
                 }
-            }
-            .onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
-                    withAnimation {
-                        let deviceId = UIDevice.current.identifierForVendor!.uuidString
-                        if login(deviceId) {
-                            // login success
-                            isLoginSuccess = true
-                        }
-                        isLoading.toggle()
-                    }
-                })
-            }
-//        }
+            })
+        }
     }
     
     private func login(_ deviceId: String) -> Bool{
