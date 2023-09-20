@@ -29,7 +29,7 @@
 		08D333CC2A9C459100CE6571 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08D333CB2A9C459100CE6571 /* Assets.xcassets */; };
 		08D333CF2A9C459100CE6571 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08D333CE2A9C459100CE6571 /* Preview Assets.xcassets */; };
 		08D333F42A9C47C700CE6571 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D333F32A9C47C700CE6571 /* MessageView.swift */; };
-		F3EB813F2AB415FB005B9E0C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F3EB813E2AB415FB005B9E0C /* Alamofire */; };
+		F33DC3A12ABA9F8900CDDFD9 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33DC3A02ABA9F8900CDDFD9 /* KeychainManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +74,7 @@
 		08D333D42A9C459100CE6571 /* LetsEatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LetsEatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		08D333DE2A9C459100CE6571 /* LetsEatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LetsEatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		08D333F32A9C47C700CE6571 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MessageView.swift; path = LetsEat/MessageView.swift; sourceTree = SOURCE_ROOT; };
+		F33DC3A02ABA9F8900CDDFD9 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +148,7 @@
 				08B608142AB836D600542C4C /* SessionManager.swift */,
 				08B608192AB9300B00542C4C /* PlanManager.swift */,
 				08B6081B2AB9318300542C4C /* MessageManager.swift */,
+				F33DC3A02ABA9F8900CDDFD9 /* KeychainManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -355,6 +357,7 @@
 				085ED2E42AAF51F400A5CE24 /* GenerateNicknameView.swift in Sources */,
 				085ED2D42AAF505600A5CE24 /* QRCodeImageView.swift in Sources */,
 				085ED2EB2AAF520F00A5CE24 /* DataManager.swift in Sources */,
+				F33DC3A12ABA9F8900CDDFD9 /* KeychainManager.swift in Sources */,
 				08B6081A2AB9300B00542C4C /* PlanManager.swift in Sources */,
 				085ED2D52AAF505600A5CE24 /* MakePlanView.swift in Sources */,
 				085ED2D02AAF502E00A5CE24 /* Plan.swift in Sources */,
