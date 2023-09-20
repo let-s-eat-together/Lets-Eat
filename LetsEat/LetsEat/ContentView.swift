@@ -9,10 +9,10 @@ import SwiftUI
 import Alamofire
 
 struct ContentView: View {
-    @State var isLoading: Bool = true
-    @State var isLoginSuccess: Bool = false
-    @State var userId: Int = -1
-    let deviceId = KeychainManager().getDeviceID()
+    @State private var isLoading: Bool = true
+    @State private var isLoginSuccess: Bool = false
+    @State private var userId: Int = -1
+    private let deviceId = KeychainManager().getDeviceID()
     @ObservedObject var appState = AppState()
     
     var body: some View {
@@ -53,17 +53,22 @@ struct ContentView: View {
         //디바이스 아이디로 로그인 요청
         //있으면 유저 아이디 받아옴 -> 로그인 성공
         //없으면 -1을 받음 -> 로그인 실패, 닉네임 생성(signUp)
-        let url = "34.22.94.135:8080" //추후 url 수정
+        let url = "http://34.22.94.135:8080/login" //추후 url 수정
         let params = ["device_id":deviceId] as Dictionary
+        let decoder : JSONDecoder = {
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            return decoder
+        }()
         AF.request(url,
                    method: .get,
                    parameters: params,
                    encoding: URLEncoding.default,
                    headers: [])
         .validate(statusCode: 200..<300)
-        .responseDecodable(of: Login.self) { response in
-            userId = response.value?.loginResult ?? -1
-            print(response.value?.loginResult)
+        .responseDecodable(of: Login.self, decoder: decoder) { response in
+            userId = response.value?.userId ?? -1
+            print(response.value?.userId)
         }
         if userId != -1 {
             return true
@@ -74,7 +79,8 @@ struct ContentView: View {
 }
 
 struct Login: Decodable {
-    let loginResult: Int?
+    let token: String?
+    let userId: Int?
 }
 
 

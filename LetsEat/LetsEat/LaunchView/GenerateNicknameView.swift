@@ -6,19 +6,20 @@
 //
 
 import SwiftUI
+import Alamofire
 
 struct GenerateNicknameView: View {
     @State private var input: String = ""
     @State private var isOK: Bool = false
     @State private var showAlert = false
+    @State private var userId: Int = -1
+    private let deviceId = KeychainManager().getDeviceID()
     var nicknameGenerated: () -> Void
     let regex = "^[^\\s]+$"
     
     var body: some View {
         NavigationStack {
             ZStack {
-                Color(.white)
-                    .edgesIgnoringSafeArea(.all)
                 VStack(alignment: .leading) {
                     Spacer()
                     Text("닉네임")
@@ -36,7 +37,6 @@ struct GenerateNicknameView: View {
                                 input = ""
                             }
                     }
-                    
                     VStack(alignment: .trailing) {
                         if isOK {
                             Text("사용가능한 닉네임입니다.")
@@ -54,13 +54,11 @@ struct GenerateNicknameView: View {
                 Button {
                     if isOK {
                         let nickname = input
-                        signUp("", nickname)
+                        signUp(deviceId, nickname)
                         nicknameGenerated()
                     } else {
                         showAlert = true
-                        
                     }
-                    
                 } label: {
                     Text("complete")
                 }
@@ -68,20 +66,35 @@ struct GenerateNicknameView: View {
                     Alert(
                         title: Text("닉네임이 올바르지 않습니다!"),
                         dismissButton: .default(Text("확인")))
-                    
                 }
             }
         }
-        
     }
     
     private func signUp(_ deviceId: String, _ nickname: String) {
-        //닉네임을 생성하고 디바이스 아이디와 함께 signUp요청
-        //유저 아이디를 받아옴 -> signUp성공과 동시에 로그인 성공
-        // let nickName = generateNickname()
-        // apiSignUp(nickName, deviceId)
-        // 이미 유저 아이디가 있는데 받는 이유?.. 로그인 성공시 어떻게 해야되는지(저장된 데이터들을 가져옴?)
+        let url = "http://34.22.94.135:8080/sign-up" //추후 url 수정
+        let params = ["device_id":deviceId] as Dictionary
+        let decoder : JSONDecoder = {
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            return decoder
+        }()
+        AF.request(url,
+                   method: .get,
+                   parameters: params,
+                   encoding: URLEncoding.default,
+                   headers: [])
+        .validate(statusCode: 200..<300)
+        .responseDecodable(of: Login.self, decoder: decoder) { response in
+            userId = response.value?.userId ?? -1
+            print(response.value?.userId)
+        }
     }
+}
+
+struct Signup: Decodable {
+    let token: String?
+    let userId: Int?
 }
 
 struct GenerateNicknameView_Previews: PreviewProvider {
