@@ -27,14 +27,13 @@ struct QRCodeImage {
 
 struct QRCodeImageView: View {
     @EnvironmentObject var appState: AppState
-    @Environment(\.dismiss) private var dismiss
     
     var userId = UUID().uuidString
     @Binding var expirationDate: Date
     
     var body: some View {
         VStack {
-            Image(uiImage: QRCodeImage().generateQRCode(from: "\(expirationDate)"))
+            Image(uiImage: QRCodeImage().generateQRCode(from: "\(userId)\n\(expirationDate)"))
                 .interpolation(.none)
                 .resizable()
                 .scaledToFit()
@@ -43,7 +42,6 @@ struct QRCodeImageView: View {
             
             Button {
                 appState.rootViewId = UUID()
-//                dismiss()
             } label: {
                 Text("완료")
                     .font(.system(size: 20))

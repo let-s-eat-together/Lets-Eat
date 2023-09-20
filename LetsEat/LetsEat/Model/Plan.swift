@@ -7,8 +7,9 @@
 
 import Foundation
 
-struct Plan: Hashable {
-    var name: String
-    var startDate: Date
-    var endDate: Date
+struct Plan: Identifiable, Hashable, Codable {
+    var id = UUID()
+    var creationDate: Date
+    var expirationDate: Date
+    var otherUserName: String
 }
