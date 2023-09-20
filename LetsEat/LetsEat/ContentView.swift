@@ -12,6 +12,7 @@ struct ContentView: View {
     @State var isLoading: Bool = true
     @State var isLoginSuccess: Bool = false
     @State var userId: Int = -1
+    let deviceId = KeychainManager().getDeviceID()
     @ObservedObject var appState = AppState()
     
     var body: some View {
@@ -37,7 +38,7 @@ struct ContentView: View {
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
                 withAnimation {
-                    let deviceId = UIDevice.current.identifierForVendor!.uuidString
+                    print(deviceId)
                     if login(deviceId) {
                         // login success
                         isLoginSuccess = true
