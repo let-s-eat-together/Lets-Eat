@@ -29,6 +29,7 @@
 		08D333CC2A9C459100CE6571 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08D333CB2A9C459100CE6571 /* Assets.xcassets */; };
 		08D333CF2A9C459100CE6571 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08D333CE2A9C459100CE6571 /* Preview Assets.xcassets */; };
 		08D333F42A9C47C700CE6571 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D333F32A9C47C700CE6571 /* MessageView.swift */; };
+		F3EB813F2AB415FB005B9E0C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F3EB813E2AB415FB005B9E0C /* Alamofire */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
