@@ -11,8 +11,10 @@ import Alamofire
 struct ContentView: View {
     @State private var isLoading: Bool = true
     @State private var isLoginSuccess: Bool = false
-    @State private var userId: Int = -1
-    private let deviceId = KeychainManager().getDeviceID()
+    @State var token: String = ""
+    @State var userId: Int = -1
+//    let deviceId = KeychainManager().getDeviceID()
+    let deviceId = "device_id2"
     @ObservedObject var appState = AppState()
     
     var body: some View {
@@ -36,51 +38,63 @@ struct ContentView: View {
             }
         }
         .onAppear {
+            login(deviceId) { tk, uid in
+                isLoginSuccess = false
+                if uid == -1 {
+                    print("sign up 진행")
+                } else if uid == -2 {
+                    print("login: data error")
+                } else { // login success
+                    print(tk)
+                    print(uid)
+                    isLoginSuccess = true
+                }
+            }
             DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
                 withAnimation {
-                    print(deviceId)
-                    if login(deviceId) {
-                        // login success
-                        isLoginSuccess = true
-                    }
                     isLoading.toggle()
                 }
             })
         }
     }
     
-    private func login(_ deviceId: String) -> Bool{
+    private func login(_ deviceId: String, completion: @escaping (String, Int)->Void) {
         //디바이스 아이디로 로그인 요청
         //있으면 유저 아이디 받아옴 -> 로그인 성공
         //없으면 -1을 받음 -> 로그인 실패, 닉네임 생성(signUp)
-        let url = "http://34.22.94.135:8080/login" //추후 url 수정
-        let params = ["device_id":deviceId] as Dictionary
+        let url = "http://34.22.94.135:8080/login"
+        let params: Parameters = ["device_id":deviceId]
+        let header: HTTPHeaders = ["Content-Type": "application/json"]
         let decoder : JSONDecoder = {
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             return decoder
         }()
         AF.request(url,
-                   method: .get,
+                   method: .post,
                    parameters: params,
-                   encoding: URLEncoding.default,
-                   headers: [])
+                   encoding: JSONEncoding.default,
+                   headers: header)
         .validate(statusCode: 200..<300)
+//        .responseData { response in
+//            switch response.result {
+//            case .success:
+//                print("성공")
+//            case .failure:
+//                print(response.error.debugDescription)
+//            }
+//        }
         .responseDecodable(of: Login.self, decoder: decoder) { response in
-            userId = response.value?.userId ?? -1
-            print(response.value?.userId)
-        }
-        if userId != -1 {
-            return true
-        } else {
-            return false
+            token = response.value?.token ?? "fail"
+            userId = response.value?.userId ?? -2
+            completion(token, userId)
         }
     }
 }
 
 struct Login: Decodable {
-    let token: String?
-    let userId: Int?
+    let token: String
+    let userId: Int
 }
 
 
