@@ -9,7 +9,6 @@ import Foundation
 
 struct Plan: Identifiable, Hashable, Codable {
     var id = UUID()
-    var creationDate: Date
-    var expirationDate: Date
-    var otherUserName: String
+    var expiredDate: Date
+    var otherUserId: String
 }

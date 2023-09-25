@@ -9,7 +9,7 @@ import SwiftUI
 import Alamofire
 
 struct GenerateNicknameView: View {
-    @State private var input: String = ""
+    @State private var username: String = ""
     @State private var isOK: Bool = false
     @State private var showAlert = false
     @State var userId: Int = -1
@@ -19,24 +19,30 @@ struct GenerateNicknameView: View {
     
     var body: some View {
         NavigationStack {
-            ZStack {
+//            ZStack {
                 VStack(alignment: .leading) {
                     Spacer()
-                    Text("닉네임")
+                    Text("사용자 이름")
                         .font(.callout)
                         .bold()
-                    ZStack(alignment: .trailing) {
-                        TextField("닉네임을 입력해주세요...", text: $input)
+                        .padding()
+                    
+//                    ZStack(alignment: .trailing) {
+                    HStack {
+                        TextField("닉네임을 입력해주세요...", text: $username)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .onChange(of: input) { newValue in
+                            .onChange(of: username) { newValue in
                                 isOK = newValue.range(of: regex, options: .regularExpression) != nil
                             }
                         Image(systemName: "xmark.circle.fill")
                             .foregroundColor(.secondary)
                             .onTapGesture {
-                                input = ""
+                                username = ""
                             }
                     }
+                    .padding()
+//                    }
+                    
                     VStack(alignment: .trailing) {
                         if isOK {
                             Text("사용가능한 닉네임입니다.")
@@ -46,29 +52,35 @@ struct GenerateNicknameView: View {
                                 .foregroundColor(.red)
                         }
                     }
-                    Spacer()
+                    .font(.system(.subheadline))
+                    .padding()
+                    
                     Spacer()
                 }
                 .frame(width: 300)
                 .padding()
+            
                 Button {
                     if isOK {
-                        let nickname = input
+                        let nickname = username
                         signUp(deviceId, nickname)
                         nicknameGenerated()
                     } else {
                         showAlert = true
                     }
                 } label: {
-                    Text("complete")
+                    Text("완료")
                 }
                 .alert(isPresented: $showAlert) {
                     Alert(
                         title: Text("닉네임이 올바르지 않습니다!"),
                         dismissButton: .default(Text("확인")))
                 }
+                .padding()
+                
+                Spacer()
             }
-        }
+//        }
     }
     
     private func signUp(_ deviceId: String, _ nickname: String) {
