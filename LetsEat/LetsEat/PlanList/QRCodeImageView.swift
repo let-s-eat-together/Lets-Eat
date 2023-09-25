@@ -29,11 +29,11 @@ struct QRCodeImageView: View {
     @EnvironmentObject var appState: AppState
     
     var userId = UUID().uuidString
-    @Binding var expirationDate: Date
+    @Binding var expiredDate: Date
     
     var body: some View {
         VStack {
-            Image(uiImage: QRCodeImage().generateQRCode(from: "\(userId)\n\(expirationDate)"))
+            Image(uiImage: QRCodeImage().generateQRCode(from: "\(expiredDate)\n\(userId)"))
                 .interpolation(.none)
                 .resizable()
                 .scaledToFit()
@@ -56,6 +56,6 @@ struct QRCodeImageView: View {
 
 struct QRCodeImageView_Previews: PreviewProvider {
     static var previews: some View {
-        QRCodeImageView(expirationDate: .constant(Date()))
+        QRCodeImageView(expiredDate: .constant(Date()))
     }
 }

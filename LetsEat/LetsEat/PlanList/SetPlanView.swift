@@ -1,14 +1,13 @@
 //
-//  MakePlanModalView.swift
+//  SetPlanView.swift
 //  LetsEat
 //
 //  Created by 이현재 on 2023/08/29.
 //
 
 import SwiftUI
-import CodeScanner
 
-struct MakePlanView: View {
+struct SetPlanView: View {
     @State var expirationDate: Date = Date()
     @State var status: String = ""
     
@@ -24,12 +23,11 @@ struct MakePlanView: View {
                 }
                 
                 Section {
-                    Text("시작 : \(Date().dateFormatter.string(from: Date()))")
-                    Text("종료 : \(Date().dateFormatter.string(from: expirationDate))")
+                    Text("시작 : \(Date.now.dateFormat())")
+                    Text("종료 : \(expirationDate.dateFormat() )")
                 }
                 
-                Text("\(status)")
-                CameraView(status: $status)
+                CameraView()
             }
             
             Spacer()
@@ -37,7 +35,7 @@ struct MakePlanView: View {
             VStack(alignment: .center) {
                 Spacer()
                 NavigationLink {
-                    QRCodeImageView(expirationDate: $expirationDate)
+                    QRCodeImageView(expiredDate: $expirationDate)
                 } label: {
                     Text("약속 만들기")
                 }
@@ -50,6 +48,6 @@ struct MakePlanView: View {
 
 struct MakePlanModalView_Previews: PreviewProvider {
     static var previews: some View {
-        MakePlanView()
+        SetPlanView()
     }
 }
