@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct SettingView: View {
+//    @EnvironmentObject var username: String
     @AppStorage("appTheme") var appTheme: String = "light" // 테마 지정
     
     @State private var isAlarmOn: Bool = false
