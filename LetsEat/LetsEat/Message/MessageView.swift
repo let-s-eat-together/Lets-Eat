@@ -26,9 +26,7 @@ struct MessageView: View {
                     Spacer()
                     
                     VStack {
-//                        Text("\(item.date)~m ago")
                         Text("~m ago")
-//                        stingButton(title: "나도 콕 찔러보기")
                     }
                     .padding()
                 }
