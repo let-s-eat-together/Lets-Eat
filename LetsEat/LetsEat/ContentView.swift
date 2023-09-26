@@ -8,6 +8,8 @@
 import SwiftUI
 import Alamofire
 
+var user: User = User(id: -1, token: "", nickname: "")
+
 struct ContentView: View {
     @State private var isLoading: Bool = true
     @State private var isLoginSuccess: Bool = false
@@ -47,6 +49,7 @@ struct ContentView: View {
                 } else { // login success
                     print(tk)
                     print(uid)
+                    user = User(id: uid, token: tk, nickname: "닉네임")
                     isLoginSuccess = true
                 }
             }
