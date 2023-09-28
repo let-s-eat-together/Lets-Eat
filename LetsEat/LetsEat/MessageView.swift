@@ -30,14 +30,8 @@ struct MessageView: View {
                         Text(timeElapsedString(for: item.date))
                             .font(.system(.caption))
                             .foregroundColor(.gray)
-                        Button("같이 찌르기") {
-                            
-                        }
-                        .font(.system(.caption))
-                        .cornerRadius(8)
-                        .padding(.top, 1)
                         
-//                        stingButton(title: "나도 콕 찔러보기")
+                        StingButton(otherUserId: item.senderName)
                     }
                     .padding()
                 }
