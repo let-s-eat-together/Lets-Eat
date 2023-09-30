@@ -32,6 +32,6 @@ struct StingButton: View {
     }
 }
 
-#Preview {
-    StingButton(otherUserId: "test")
-}
+//#Preview {
+//    StingButton(otherUserId: "test")
+//}
