@@ -13,6 +13,16 @@ struct MessageView: View {
     
     @State private var messageList: [Message] = []
     
+    func getMessageDummyData() -> [Message] {
+        return [Message(senderName: "이호수", receiverName: "조단현"),
+                Message(senderName: "이현재", receiverName: "이호수"),
+                Message(senderName: "김성민", receiverName: "이현재"),
+                Message(senderName: "송정현", receiverName: "김성민"),
+                Message(senderName: "이현민", receiverName: "송정현"),
+                Message(senderName: "서은서", receiverName: "이현민"),
+                Message(senderName: "조단현", receiverName: "서은서")]
+    }
+    
     var body: some View {
         List {
             ForEach(messageManager.messageList, id: \.self) { item in

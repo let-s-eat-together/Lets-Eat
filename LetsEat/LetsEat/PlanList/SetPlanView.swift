@@ -35,7 +35,7 @@ struct SetPlanView: View {
             VStack(alignment: .center) {
                 Spacer()
                 NavigationLink {
-                    QRCodeImageView(expiredDate: $expirationDate)
+                    QRCodeImageView(expirationDate: $expirationDate)
                 } label: {
                     Text("약속 만들기")
                 }

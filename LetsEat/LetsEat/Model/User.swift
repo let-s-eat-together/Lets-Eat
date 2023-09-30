@@ -12,3 +12,9 @@ struct User: Identifiable, Hashable, Codable {
     var token: String
     var nickname: String
 }
+
+struct Login: Decodable {
+    let token: String
+    let userId: Int
+}
+

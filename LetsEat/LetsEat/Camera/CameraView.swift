@@ -10,11 +10,13 @@ import CodeScanner
 import Alamofire
 
 struct CameraView: View {
+    @EnvironmentObject var appState: AppState
     @State private var isShowingScanner = false
     @State private var isCreate = false
-    
-    @State var expiredDate: Date = Date()
-    @State var otherUserId: String = ""
+    @State var userManager = UserManager.shared
+//    @State var expiredDate: String = ""
+//    @State var expirationDate: Date = Date.now
+//    @State var senderId: String = ""
     
     var body: some View {
         Button {
@@ -27,7 +29,8 @@ struct CameraView: View {
         }
         .alert("약속이 생성되었습니다", isPresented: $isCreate) {
             Button(role: .cancel) {
-                
+                appState.rootViewId = UUID()
+                PlanManager().fetchPlans()
             } label: {
                 Text("완료")
             }
@@ -40,39 +43,48 @@ struct CameraView: View {
         case .success(let data):
             let details = data.string.components(separatedBy: "\n")
             guard details.count == 2 else { return }
-            expiredDate = details[0].toDate() ?? Date.now
-            otherUserId = details[1]
-            sendPlanData(expiredDate, otherUserId)
+            print(details)
+//            let expirationDate = details[0].toDate() ?? Date.now
+            let expirationDate = details[0]
+            let senderId = details[1]
+            sendPlanData(expirationDate, senderId)
             print("Found code: \(data)")
         case .failure(let error):
             print("Failed Scan QR Code because of \(error)")
         }
     }
     
-    func sendPlanData(_ expiredDate: Date, _ otherUserId: String) {
+    func sendPlanData(_ expirationDate: String, _ senderId: String) {
         let url = "http://34.22.94.135:8080/plan"
-        let params: Parameters = ["expiredDate": expiredDate, "otherUserId": otherUserId]
-        let header: HTTPHeaders = ["Content-Type": "application/json"]
         
-        //        let decoder : JSONDecoder = {
-        //            let decoder = JSONDecoder()
-        //            decoder.keyDecodingStrategy = .convertFromSnakeCase
-        //            return decoder
-        //        }()
+        let accessToken = userManager.userInfo.token
         
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer \(accessToken)",
+            "Content-Type": "application/json"
+        ]
+        
+        let params: Parameters = [
+            "expired_date": expirationDate,
+            "sender_id": Int(senderId),
+            "receiver_id": 0
+        ]
+                
         AF.request(url,
                    method: .post,
                    parameters: params,
                    encoding: JSONEncoding.default,
-                   headers: header)
-        .validate(statusCode: 200..<300)
+                   headers: headers)
+//        .validate(statusCode: 200..<300)
         .responseData { response in
+            debugPrint(response)
             switch response.result {
-            case .success:
-                print("성공")
+            case .success(let data):
+                print("Success: \(data)")
                 isCreate = true
-            case .failure:
-                print(response.error.debugDescription)
+            case .failure(let error):
+                print("Error: \(error)")
+                debugPrint(response)
             }
         }
     }
