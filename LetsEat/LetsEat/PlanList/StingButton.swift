@@ -31,7 +31,3 @@ struct StingButton: View {
         print("send to \(who) 콕!")
     }
 }
-
-#Preview {
-    StingButton(otherUserId: "test")
-}

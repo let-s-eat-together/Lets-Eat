@@ -15,8 +15,14 @@ struct ContentView: View {
     @State private var isLoginSuccess: Bool = false
     @State var token: String = ""
     @State var userId: Int = -1
-//    let deviceId = KeychainManager().getDeviceID()
-    let deviceId = "device_id2"
+    
+    @State var userManager = UserManager.shared
+    @State var planManager = PlanManager.shared
+    
+    let deviceId = KeychainManager().getDeviceID()
+    // test account
+//     let deviceId = "device_id1"
+    
     @ObservedObject var appState = AppState()
     
     var body: some View {
@@ -47,9 +53,11 @@ struct ContentView: View {
                 } else if uid == -2 {
                     print("login: data error")
                 } else { // login success
-                    print(tk)
-                    print(uid)
-                    user = User(id: uid, token: tk, nickname: "닉네임")
+                    print("token \(tk)")
+                    print("userId \(uid)")
+                    userManager.setInfo(id: uid, token: tk, nickname: "닉네임")
+//                    user = User(id: uid, token: tk, nickname: "닉네임")
+                    planManager.fetchPlans()
                     isLoginSuccess = true
                 }
             }
@@ -79,14 +87,15 @@ struct ContentView: View {
                    encoding: JSONEncoding.default,
                    headers: header)
         .validate(statusCode: 200..<300)
-//        .responseData { response in
-//            switch response.result {
-//            case .success:
-//                print("성공")
-//            case .failure:
-//                print(response.error.debugDescription)
-//            }
-//        }
+        .responseData { response in
+            debugPrint(response)
+            switch response.result {
+            case .success:
+                print("성공")
+            case .failure:
+                print(response.error.debugDescription)
+            }
+        }
         .responseDecodable(of: Login.self, decoder: decoder) { response in
             token = response.value?.token ?? "fail"
             userId = response.value?.userId ?? -2
@@ -94,12 +103,6 @@ struct ContentView: View {
         }
     }
 }
-
-struct Login: Decodable {
-    let token: String
-    let userId: Int
-}
-
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

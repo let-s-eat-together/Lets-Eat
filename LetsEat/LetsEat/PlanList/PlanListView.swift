@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PlanListView: View {
-    @State var dataManager = DataManager.shared
+    @ObservedObject var planManager = PlanManager.shared
     
     var body: some View {
         NavigationStack {
@@ -17,8 +17,15 @@ struct PlanListView: View {
                     .padding()
                     .zIndex(1)
                 List {
-                    ForEach(dataManager.getPlanDummyData()) { data in
-                        planItem(planData: data)
+                    if planManager.planList.isEmpty {
+                        Text("약속이 없습니다")
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                            .foregroundStyle(.secondary)
+                    } else {
+                        ForEach(planManager.planList, id: \.id) {data in
+                            planItem(planData: data)
+                        }
                     }
                 }
                 .scrollContentBackground(.hidden)
@@ -56,18 +63,17 @@ struct planItem: View {
             Spacer()
             
             VStack(alignment: .leading) {
-                Text(planData.otherUserId)
+                Text(planData.otherUserName)
                     .font(.title)
-                let day = Date().calcDate(from: planData.expiredDate)
+                let day = Date().calcDate(from: planData.expirationDate.toDay() ?? Date.now)
                 let txt = makeTxt(day)
                 Text(txt)
                     .font(.caption)
                     .foregroundColor(.secondary)
             }
-            
             Spacer()
             
-            StingButton(otherUserId: planData.otherUserId)
+            StingButton(otherUserId: planData.otherUserName)
                 .buttonStyle(.plain)
         }
         .padding()

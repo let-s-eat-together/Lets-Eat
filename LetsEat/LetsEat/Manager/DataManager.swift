@@ -13,29 +13,29 @@ class DataManager: ObservableObject {
     
     @Published var dataList: [Message] = []
     
-    func getPlanDummyData() -> [Plan] {
-        return [
-            Plan(
-                expiredDate: Calendar.current.date(from: DateComponents(year: 2023, month: 9, day: 1)) ?? Date.now, otherUserId: "조단현"),
-            Plan(
-            
-                 expiredDate: Calendar.current.date(from: DateComponents(year: 2023, month: 10, day: 1)) ?? Date.now, otherUserId: "이현재"),
-            Plan(
-            
-                 expiredDate: Calendar.current.date(from: DateComponents(year: 2023, month: 10, day: 30)) ?? Date.now, otherUserId: "이호수"),
-            Plan(
-            
-                 expiredDate: Calendar.current.date(from: DateComponents(year: 2023, month: 11, day: 1)) ?? Date.now, otherUserId: "이현민"),
-            Plan(
-            
-                 expiredDate: Calendar.current.date(from: DateComponents(year: 2023, month: 11, day: 10)) ?? Date.now, otherUserId: "김성민"),
-            Plan(
-            
-                 expiredDate: Calendar.current.date(from: DateComponents(year: 2023, month: 11, day: 30)) ?? Date.now, otherUserId: "서은서"),
-            Plan(
-            
-                 expiredDate: Calendar.current.date(from: DateComponents(year: 2023, month: 12, day: 25)) ?? Date.now, otherUserId: "송정현")]
-    }
+//    func getPlanDummyData() -> [Plan] {
+//        return [
+//            Plan(
+//                expiredDate: Calendar.current.date(from: DateComponents(year: 2023, month: 9, day: 1)) ?? Date.now, otherUserName: "조단현"),
+//            Plan(
+//            
+//                 expiredDate: Calendar.current.date(from: DateComponents(year: 2023, month: 10, day: 1)) ?? Date.now, otherUserName: "이현재"),
+//            Plan(
+//            
+//                 expiredDate: Calendar.current.date(from: DateComponents(year: 2023, month: 10, day: 30)) ?? Date.now, otherUserName: "이호수"),
+//            Plan(
+//            
+//                 expiredDate: Calendar.current.date(from: DateComponents(year: 2023, month: 11, day: 1)) ?? Date.now, otherUserName: "이현민"),
+//            Plan(
+//            
+//                 expiredDate: Calendar.current.date(from: DateComponents(year: 2023, month: 11, day: 10)) ?? Date.now, otherUserName: "김성민"),
+//            Plan(
+//            
+//                 expiredDate: Calendar.current.date(from: DateComponents(year: 2023, month: 11, day: 30)) ?? Date.now, otherUserName: "서은서"),
+//            Plan(
+//            
+//                 expiredDate: Calendar.current.date(from: DateComponents(year: 2023, month: 12, day: 25)) ?? Date.now, otherUserName: "송정현")]
+//    }
     
     func getMessageDummyData() -> [Message] {
         return [Message(senderName: "이호수", receiverName: "조단현"),

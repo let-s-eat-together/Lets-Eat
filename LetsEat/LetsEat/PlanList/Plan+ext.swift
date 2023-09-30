@@ -10,6 +10,7 @@ import Foundation
 extension Date {
     func calcDate(from endDate: Date) -> Int {
         let Comp = Calendar.current.dateComponents([.day], from: Date(), to: endDate)
+        print(Comp)
         guard let d = Comp.day else { return 0 }
         return d
     }
