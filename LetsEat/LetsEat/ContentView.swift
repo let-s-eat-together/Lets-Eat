@@ -1,23 +1,21 @@
 //
 //  ContentView.swift
 //  LetsEat
-//
-//  Created by 이현재 on 2023/08/28.
-//
 
 import SwiftUI
 import Alamofire
 
-var user: User = User(id: -1, token: "", nickname: "")
-
 struct ContentView: View {
     @State private var isLoading: Bool = true
     @State private var isLoginSuccess: Bool = false
+    
     @State var token: String = ""
     @State var userId: Int = -1
+    @State var nickname: String = ""
     
     @State var userManager = UserManager.shared
     @State var planManager = PlanManager.shared
+    @State var messageManager = MessageManager.shared
     
     let deviceId = KeychainManager().getDeviceID()
     // test account
@@ -31,7 +29,6 @@ struct ContentView: View {
                 PlanListView()
                     .id(appState.rootViewId)
                     .environmentObject(appState)
-                    .scrollContentBackground(.hidden)
             }
             .zIndex(0)
             if isLoading {
@@ -39,7 +36,7 @@ struct ContentView: View {
                     .transition(.opacity)
                     .zIndex(1)
             } else if !isLoginSuccess {
-                GenerateNicknameView() {
+                SignUpView() {
                     isLoginSuccess = true
                 }
                 .zIndex(1)
@@ -55,12 +52,15 @@ struct ContentView: View {
                 } else { // login success
                     print("token \(tk)")
                     print("userId \(uid)")
-                    userManager.setInfo(id: uid, token: tk, nickname: "닉네임")
-//                    user = User(id: uid, token: tk, nickname: "닉네임")
+                    userManager.setInfo(id: uid, token: tk)
+//                    let user = User(id: uid, token: tk, nickname: name)
+//                    userManager.saveUser(user)
                     planManager.fetchPlans()
+                    messageManager.fetchMessages()
                     isLoginSuccess = true
                 }
             }
+            
             DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
                 withAnimation {
                     isLoading.toggle()
@@ -74,13 +74,17 @@ struct ContentView: View {
         //있으면 유저 아이디 받아옴 -> 로그인 성공
         //없으면 -1을 받음 -> 로그인 실패, 닉네임 생성(signUp)
         let url = "http://34.22.94.135:8080/login"
-        let params: Parameters = ["device_id":deviceId]
+        
+        let params: Parameters = ["device_id": deviceId]
+        
         let header: HTTPHeaders = ["Content-Type": "application/json"]
+        
         let decoder : JSONDecoder = {
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             return decoder
         }()
+        
         AF.request(url,
                    method: .post,
                    parameters: params,
