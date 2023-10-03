@@ -1,9 +1,6 @@
 //
 //  CameraView.swift
 //  LetsEat
-//
-//  Created by 이현재 on 2023/09/16.
-//
 
 import SwiftUI
 import CodeScanner
@@ -14,9 +11,7 @@ struct CameraView: View {
     @State private var isShowingScanner = false
     @State private var isCreate = false
     @State var userManager = UserManager.shared
-//    @State var expiredDate: String = ""
-//    @State var expirationDate: Date = Date.now
-//    @State var senderId: String = ""
+    @State var tokenManager = TokenManager.shared
     
     var body: some View {
         Button {
@@ -43,8 +38,7 @@ struct CameraView: View {
         case .success(let data):
             let details = data.string.components(separatedBy: "\n")
             guard details.count == 2 else { return }
-            print(details)
-//            let expirationDate = details[0].toDate() ?? Date.now
+//            print(details)
             let expirationDate = details[0]
             let senderId = details[1]
             sendPlanData(expirationDate, senderId)
@@ -66,7 +60,7 @@ struct CameraView: View {
         
         let params: Parameters = [
             "expired_date": expirationDate,
-            "sender_id": Int(senderId),
+            "sender_id": Int(senderId) ?? 0,
             "receiver_id": 0
         ]
                 

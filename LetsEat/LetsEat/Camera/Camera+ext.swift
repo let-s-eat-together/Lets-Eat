@@ -1,9 +1,6 @@
 //
 //  Camera+ext.swift
 //  LetsEat
-//
-//  Created by 이현재 on 2023/09/25.
-//
 
 import Foundation
 
