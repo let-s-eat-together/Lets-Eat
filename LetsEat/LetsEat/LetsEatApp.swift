@@ -1,18 +1,17 @@
 //
 //  LetsEatApp.swift
 //  LetsEat
-//
-//  Created by 이현재 on 2023/08/28.
-//
 
 import SwiftUI
 
 @main
 struct LetsEatApp: App {
+    @AppStorage("isDarkModeOn") private var isDarkModeOn = false
     
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .preferredColorScheme(isDarkModeOn ? .dark : .light)
         }
     }
 }
