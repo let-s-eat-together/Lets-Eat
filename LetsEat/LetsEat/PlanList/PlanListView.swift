@@ -1,9 +1,6 @@
 //
 //  PlanListView.swift
 //  LetsEat
-//
-//  Created by 이현재 on 2023/08/28.
-//
 
 import SwiftUI
 
@@ -12,22 +9,22 @@ struct PlanListView: View {
     
     var body: some View {
         NavigationStack {
-            ZStack(alignment: .bottomTrailing) {
-                FloatingButton()
-                    .padding()
-                    .zIndex(1)
+            ZStack {
                 List {
                     if planManager.planList.isEmpty {
                         Text("약속이 없습니다")
                             .font(.largeTitle)
                             .fontWeight(.bold)
                             .foregroundStyle(.secondary)
+                            .listRowSeparator(.hidden)
                     } else {
                         ForEach(planManager.planList, id: \.id) {data in
                             planItem(planData: data)
                         }
+                        .listRowSeparator(.hidden)
                     }
                 }
+                .listStyle(.inset)
                 .scrollContentBackground(.hidden)
                 .navigationTitle("밥 함 묵자")
                 .toolbar {
@@ -45,6 +42,14 @@ struct PlanListView: View {
                     }
                 }
                 .zIndex(0)
+                
+                HStack {
+                    Spacer()
+                    
+                    FloatingButton()
+                        .padding()
+                        .zIndex(1)
+                }
             }
         }
     }
@@ -73,7 +78,7 @@ struct planItem: View {
             }
             Spacer()
             
-            StingButton(otherUserId: planData.otherUserName)
+            StingButton(otherUserName: planData.otherUserName, planId: planData.id)
                 .buttonStyle(.plain)
         }
         .padding()

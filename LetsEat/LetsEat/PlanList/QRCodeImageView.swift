@@ -1,9 +1,6 @@
 //
 //  QRCodeImageView.swift
 //  LetsEat
-//
-//  Created by 이현재 on 2023/08/31.
-//
 
 import SwiftUI
 import CoreImage.CIFilterBuiltins

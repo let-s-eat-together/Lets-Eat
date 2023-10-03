@@ -1,15 +1,12 @@
 //
 //  FloatingButton.swift
 //  LetsEat
-//
-//  Created by 이현재 on 2023/09/25.
-//
 
 import SwiftUI
 
 struct FloatingButton: View {
     var body: some View {
-        HStack {
+        VStack {
             Spacer()
             
             NavigationLink {
@@ -22,5 +19,11 @@ struct FloatingButton: View {
                     .foregroundColor(.primary)
             }
         }
+    }
+}
+
+struct FloatingButton_Previews: PreviewProvider {
+    static var previews: some View {
+        FloatingButton()
     }
 }
