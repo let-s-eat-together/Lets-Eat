@@ -1,15 +1,17 @@
+//
+//  MessageManager.swift
+//  LetsEat
+
 import SwiftUI
-import Alamofire
 
 struct SettingView: View {
-    @AppStorage("appTheme") var appTheme: String = "light" // 테마 지정
+    @AppStorage("isDarkModeOn") private var isDarkModeOn = false
+    
+    @State var userManager = UserManager.shared
     
     @State private var isAlarmOn: Bool = false
-    @State private var isDarkOn: Bool = false
-    @State private var nickname: String = "eunseo"
     @State private var editedNickname: String = ""
     @State private var isEditingNickname: Bool = false
-    let userId = user.id
     
     var isNicknameValid: Bool {
         return editedNickname.count >= 1
@@ -17,78 +19,100 @@ struct SettingView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            List {
+            Form {
                 Section {
                     HStack {
                         Image("discord")
                             .resizable()
-                            .aspectRatio(contentMode: .fit)
+                            .scaledToFit()
                             .frame(width: 40, height: 40)
                             .padding(.all, 15)
-                            .foregroundColor(.white)
                             .clipShape(Circle())
-                        VStack(alignment: .leading) {
-                            if isEditingNickname {
-                                TextField("변경할 이름", text: $editedNickname)
-                                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                                    .frame(width: 160)
-                                    .onAppear {
-                                        editedNickname = nickname
-                                    }
-                            } else {
-                                Text(nickname)
-                                    .font(.headline)
-                            }
-                        }
-                        Spacer()
-                        Button(action: {
-                            isEditingNickname.toggle()
-                            if !isEditingNickname {
-                                if isNicknameValid {
-                                    nickname = editedNickname
-                                }
-                            }
-                        }) {
-                            Text(isEditingNickname ? "완료" : "프로필 수정")
-                                .foregroundColor(.blue)
-                        }
+                        
+                        Text(userManager.getUser()?.username ?? "default")
+                            .font(.title2)
+                        
+                        
+                        //                        VStack(alignment: .leading) {
+                        //                            if isEditingNickname {
+                        //                                TextField("변경할 이름", text: $editedNickname)
+                        //                                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                        //                                    .frame(width: 160)
+                        //                                    .onAppear {
+                        //                                        editedNickname = userManager.userInfo.nickname
+                        //                                    }
+                        //                            } else {
+                        //                                Text(userManager.userInfo.nickname)
+                        //                                //                                Text(nickname)
+                        //                                //                                    .font(.headline)
+                        //                            }
+                        //                        }
+                        //                        Spacer()
+                        //                        Button(action: {
+                        //                            isEditingNickname.toggle()
+                        //                            if !isEditingNickname {
+                        //                                if isNicknameValid {
+                        //                                    //                                    nickname = editedNickname
+                        //                                }
+                        //                            }
+                        //                        }) {
+                        //                            Text(isEditingNickname ? "완료" : "프로필 수정")
+                        //                                .foregroundColor(.blue)
+                        //                        }
+                    }
+                }
+                
+                Section {
+                    NavigationLink("프로필 수정") {
+                        EditProfileView()
                     }
                 }
                 
                 Section {
                     Toggle(isOn: $isAlarmOn) {
-                        Text("푸시 알림")
+                        Text("Push 알림")
                     }
-//                    Toggle(isOn: $isDarkOn) {
-//                        Text("다크 모드")
-//                    }
-//                    .onChange(of: isDarkOn) { newValue in
-//                        appTheme = newValue ? "dark" : "light"
-//                    }
+                    Toggle(isOn: $isDarkModeOn) {
+                        Text("다크 모드")
+                    }
+                    .onChange(of: isDarkModeOn) { newValue in
+                        UIApplication.shared.windows.first?.rootViewController?.overrideUserInterfaceStyle = newValue ? .dark : .light
+                    }
+                }
+                
+                Section {
+                    NavigationLink("이용약관") {
+                        Text("이용약관")
+                    }
+                    NavigationLink("개인정보 처리 방칭") {
+                        Text("detail")
+                    }
+                    NavigationLink("버전 정보") {
+                        Text("현재 버전 1.0.0")
+                    }
+                }
+                
+                Section {
+                    Button {
+                        
+                    } label: {
+                        Text("로그아웃")
+                    }
+                    Button {
+                        
+                    } label: {
+                        Text("회원 탈퇴")
+                    }
                 }
             }
         }
-//        .preferredColorScheme(appTheme == "dark" ? .dark : .light)
+        .navigationTitle("설정")
     }
-    
-    private func updateNickname() {
-        let apiURL = "http://34.22.94.135:8080/rename"
-        let headers : HTTPHeaders = [
-            "Content-Type": "application/json"
-        ]
-        
-        let parameters: Parameters = [
-            "user_name": editedNickname,
-            "user_id": userId// 추가해야함
-        ]
-        
-        AF.request(apiURL, method: .put, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
-            .validate(statusCode: 200..<300)
-    }
-    struct SettingView_Previews: PreviewProvider {
-        static var previews: some View {
-            SettingView()
-        }
+}
+
+struct SettingView_Previews: PreviewProvider {
+    static var previews: some View {
+        SettingView()
     }
 }
 
