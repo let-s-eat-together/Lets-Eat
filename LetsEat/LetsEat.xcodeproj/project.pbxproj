@@ -13,17 +13,16 @@
 		085ED2D52AAF505600A5CE24 /* SetPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085ED2D22AAF505600A5CE24 /* SetPlanView.swift */; };
 		085ED2D62AAF505600A5CE24 /* PlanListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085ED2D32AAF505600A5CE24 /* PlanListView.swift */; };
 		085ED2D82AAF506000A5CE24 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085ED2D72AAF506000A5CE24 /* SettingView.swift */; };
-		085ED2E42AAF51F400A5CE24 /* GenerateNicknameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085ED2E12AAF51F400A5CE24 /* GenerateNicknameView.swift */; };
+		085ED2E42AAF51F400A5CE24 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085ED2E12AAF51F400A5CE24 /* SignUpView.swift */; };
 		085ED2E62AAF51F400A5CE24 /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085ED2E22AAF51F400A5CE24 /* LaunchScreenView.swift */; };
 		085ED2EA2AAF520F00A5CE24 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085ED2E82AAF520F00A5CE24 /* AppState.swift */; };
-		085ED2EB2AAF520F00A5CE24 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085ED2E92AAF520F00A5CE24 /* DataManager.swift */; };
+		088211B62ACBF48000763BF6 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088211B52ACBF48000763BF6 /* EditProfileView.swift */; };
 		0891105D2AC191D300C31063 /* Camera+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0891105C2AC191D300C31063 /* Camera+ext.swift */; };
 		0891105F2AC1939B00C31063 /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0891105E2AC1939B00C31063 /* FloatingButton.swift */; };
 		089110622AC1946100C31063 /* StingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089110612AC1946100C31063 /* StingButton.swift */; };
 		089110642AC195B700C31063 /* Plan+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089110632AC195B700C31063 /* Plan+ext.swift */; };
 		08B608102AB5CB6A00542C4C /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B6080F2AB5CB6A00542C4C /* CameraView.swift */; };
 		08B608132AB7DCA100542C4C /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 08B608122AB7DCA100542C4C /* CodeScanner */; };
-		08B608152AB836D600542C4C /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B608142AB836D600542C4C /* SessionManager.swift */; };
 		08B608182AB8413800542C4C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 08B608172AB8413800542C4C /* Alamofire */; };
 		08B6081A2AB9300B00542C4C /* PlanManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B608192AB9300B00542C4C /* PlanManager.swift */; };
 		08B6081C2AB9318300542C4C /* MessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B6081B2AB9318300542C4C /* MessageManager.swift */; };
@@ -62,16 +61,15 @@
 		085ED2D22AAF505600A5CE24 /* SetPlanView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetPlanView.swift; sourceTree = "<group>"; };
 		085ED2D32AAF505600A5CE24 /* PlanListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanListView.swift; sourceTree = "<group>"; };
 		085ED2D72AAF506000A5CE24 /* SettingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
-		085ED2E12AAF51F400A5CE24 /* GenerateNicknameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateNicknameView.swift; sourceTree = "<group>"; };
+		085ED2E12AAF51F400A5CE24 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		085ED2E22AAF51F400A5CE24 /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
 		085ED2E82AAF520F00A5CE24 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
-		085ED2E92AAF520F00A5CE24 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		088211B52ACBF48000763BF6 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		0891105C2AC191D300C31063 /* Camera+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Camera+ext.swift"; sourceTree = "<group>"; };
 		0891105E2AC1939B00C31063 /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
 		089110612AC1946100C31063 /* StingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StingButton.swift; sourceTree = "<group>"; };
 		089110632AC195B700C31063 /* Plan+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plan+ext.swift"; sourceTree = "<group>"; };
 		08B6080F2AB5CB6A00542C4C /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
-		08B608142AB836D600542C4C /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		08B608192AB9300B00542C4C /* PlanManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanManager.swift; sourceTree = "<group>"; };
 		08B6081B2AB9318300542C4C /* MessageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageManager.swift; sourceTree = "<group>"; };
 		08C851D02AC6EC880011C4E5 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
@@ -139,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				085ED2D72AAF506000A5CE24 /* SettingView.swift */,
+				088211B52ACBF48000763BF6 /* EditProfileView.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -146,7 +145,7 @@
 		085ED2E72AAF51FF00A5CE24 /* LaunchView */ = {
 			isa = PBXGroup;
 			children = (
-				085ED2E12AAF51F400A5CE24 /* GenerateNicknameView.swift */,
+				085ED2E12AAF51F400A5CE24 /* SignUpView.swift */,
 				085ED2E22AAF51F400A5CE24 /* LaunchScreenView.swift */,
 			);
 			path = LaunchView;
@@ -156,12 +155,10 @@
 			isa = PBXGroup;
 			children = (
 				085ED2E82AAF520F00A5CE24 /* AppState.swift */,
-				085ED2E92AAF520F00A5CE24 /* DataManager.swift */,
-				08B608142AB836D600542C4C /* SessionManager.swift */,
-				08B608192AB9300B00542C4C /* PlanManager.swift */,
-				08B6081B2AB9318300542C4C /* MessageManager.swift */,
 				F33DC3A02ABA9F8900CDDFD9 /* KeychainManager.swift */,
 				08C851D02AC6EC880011C4E5 /* UserManager.swift */,
+				08B608192AB9300B00542C4C /* PlanManager.swift */,
+				08B6081B2AB9318300542C4C /* MessageManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -369,13 +366,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				08D333F42A9C47C700CE6571 /* MessageView.swift in Sources */,
-				085ED2E42AAF51F400A5CE24 /* GenerateNicknameView.swift in Sources */,
+				085ED2E42AAF51F400A5CE24 /* SignUpView.swift in Sources */,
 				085ED2D42AAF505600A5CE24 /* QRCodeImageView.swift in Sources */,
-				085ED2EB2AAF520F00A5CE24 /* DataManager.swift in Sources */,
 				F33DC3A12ABA9F8900CDDFD9 /* KeychainManager.swift in Sources */,
 				0891105F2AC1939B00C31063 /* FloatingButton.swift in Sources */,
 				08C851D12AC6EC880011C4E5 /* UserManager.swift in Sources */,
 				08B6081A2AB9300B00542C4C /* PlanManager.swift in Sources */,
+				088211B62ACBF48000763BF6 /* EditProfileView.swift in Sources */,
 				085ED2D52AAF505600A5CE24 /* SetPlanView.swift in Sources */,
 				085ED2D02AAF502E00A5CE24 /* Plan.swift in Sources */,
 				0891105D2AC191D300C31063 /* Camera+ext.swift in Sources */,
@@ -389,7 +386,6 @@
 				085ED2EA2AAF520F00A5CE24 /* AppState.swift in Sources */,
 				085ED2D62AAF505600A5CE24 /* PlanListView.swift in Sources */,
 				085ED2E62AAF51F400A5CE24 /* LaunchScreenView.swift in Sources */,
-				08B608152AB836D600542C4C /* SessionManager.swift in Sources */,
 				08B608102AB5CB6A00542C4C /* CameraView.swift in Sources */,
 				F302B73E2AC274FA009BC603 /* User.swift in Sources */,
 			);
@@ -559,7 +555,6 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -591,7 +586,6 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
