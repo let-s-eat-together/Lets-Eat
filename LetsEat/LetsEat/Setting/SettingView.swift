@@ -99,6 +99,12 @@ struct SettingView: View {
                         Text("로그아웃")
                     }
                     Button {
+                        if !KeychainManager().deleteDeviceID() {
+                            print("삭제 오류")
+                        } else {
+                            // 탈퇴 api 호출해서 db에서 삭제
+                            print("탈퇴 완료")
+                        }
                         
                     } label: {
                         Text("회원 탈퇴")
