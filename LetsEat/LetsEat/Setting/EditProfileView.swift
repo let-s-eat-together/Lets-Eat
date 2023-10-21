@@ -11,6 +11,9 @@ struct EditProfileView: View {
     
     @State var username: String = ""
     let regex = "^[^\\s]+$"
+    let userId = UserManager.shared.getUser()?.id ?? 0
+    @Environment(\.presentationMode) var presentationMode
+
     
     var body: some View {
         VStack {
@@ -59,6 +62,8 @@ struct EditProfileView: View {
             Button {
                 if isOK {
                     let nickname = username
+                    updateNickname(userId, nickname)
+                    presentationMode.wrappedValue.dismiss()
                 } else {
                     showAlert = true
                 }
