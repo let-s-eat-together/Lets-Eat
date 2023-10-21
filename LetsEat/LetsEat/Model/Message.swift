@@ -4,14 +4,16 @@
 
 import Foundation
 
-struct Message: Hashable, Codable {
-    var date = Date()
-    var senderName: String
-    var receiverName: String
+struct Message: Identifiable, Codable {
+    var id: Int
+    var creationDate: String
+    var otherUserName: String
+    var countSting: Int
     
     enum CodingKeys: String, CodingKey {
-        case date = "now_date"
-        case senderName = "sender_name"
-        case receiverName = "receiver_name"
+        case id = "plan_id"
+        case creationDate = "creation_date"
+        case otherUserName = "other_user_name"
+        case countSting = "countSting"
     }
 }

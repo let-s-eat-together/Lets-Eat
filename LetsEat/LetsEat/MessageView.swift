@@ -6,31 +6,33 @@ import SwiftUI
 
 struct MessageView: View {
     @State var messageManager = MessageManager.shared
-    
-    @State private var messageList: [Message] = [
-        Message(date: Date.now, senderName: "sender", receiverName: "me"),
-        Message(date: Date.now, senderName: "sender", receiverName: "me"),
-        Message(date: Date.now, senderName: "sender", receiverName: "me"),
-        Message(date: Date.now, senderName: "sender", receiverName: "me"),
-        Message(date: Date.now, senderName: "sender", receiverName: "me"),
-    ]
+        
+    //    @State private var messageList: [Message] = [
+    //        Message(date: Date.now, senderName: "sender", receiverName: "me"),
+    //        Message(date: Date.now, senderName: "sender", receiverName: "me"),
+    //        Message(date: Date.now, senderName: "sender", receiverName: "me"),
+    //        Message(date: Date.now, senderName: "sender", receiverName: "me"),
+    //        Message(date: Date.now, senderName: "sender", receiverName: "me"),
+    //    ]
     
     var body: some View {
+        @State var messageList = messageManager.messageList
         List {
-//            ForEach(messageManager.messageList, id: \.self) { item in
-                ForEach(messageList, id: \.self) { item in
+            ForEach(messageList, id: \.id) { item in
+//                ForEach(messageList, id: \.self) { item in
                 HStack {
                     VStack(alignment: .leading) {
                         Text("콕 찔러보기")
                             .font(.system(.caption))
                         
-                        Text("\(item.senderName)님이 콕 찔렀습니다!")
+                        Text("\(item.otherUserName)님이 콕 찔렀습니다!")
                     }
                     
                     Spacer()
                     
                     VStack {
-                        Text(timeElapsedString(for: item.date))
+                        Text(timeElapsedString(for: item.creationDate.toDate() ?? Date.now))
+//                        Text(timeElapsedString(for: item.creationDate.toDate() ?? Date.now))
                             .font(.system(.caption))
                             .foregroundColor(.gray)
                         
@@ -49,7 +51,7 @@ struct MessageView: View {
     }
     
     func removeList(at offsets: IndexSet) {
-        messageList.remove(atOffsets: offsets)
+        messageManager.messageList.remove(atOffsets: offsets)
     }
     
     func timeElapsedString(for date: Date) -> String {
