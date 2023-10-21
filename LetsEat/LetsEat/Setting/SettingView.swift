@@ -84,7 +84,7 @@ struct SettingView: View {
                     NavigationLink("이용약관") {
                         Text("이용약관")
                     }
-                    NavigationLink("개인정보 처리 방칭") {
+                    NavigationLink("개인정보 처리 방침") {
                         Text("detail")
                     }
                     NavigationLink("버전 정보") {
