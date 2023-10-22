@@ -31,37 +31,8 @@ struct SettingView: View {
                             .frame(width: 40, height: 40)
                             .padding(.all, 15)
                             .clipShape(Circle())
-                        
-                        Text(userManager.getUser()?.username ?? "default")
+                        Text(userManager.userInfo.username)
                             .font(.title2)
-                        
-                        
-                        //                        VStack(alignment: .leading) {
-                        //                            if isEditingNickname {
-                        //                                TextField("변경할 이름", text: $editedNickname)
-                        //                                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                        //                                    .frame(width: 160)
-                        //                                    .onAppear {
-                        //                                        editedNickname = userManager.userInfo.nickname
-                        //                                    }
-                        //                            } else {
-                        //                                Text(userManager.userInfo.nickname)
-                        //                                //                                Text(nickname)
-                        //                                //                                    .font(.headline)
-                        //                            }
-                        //                        }
-                        //                        Spacer()
-                        //                        Button(action: {
-                        //                            isEditingNickname.toggle()
-                        //                            if !isEditingNickname {
-                        //                                if isNicknameValid {
-                        //                                    //                                    nickname = editedNickname
-                        //                                }
-                        //                            }
-                        //                        }) {
-                        //                            Text(isEditingNickname ? "완료" : "프로필 수정")
-                        //                                .foregroundColor(.blue)
-                        //                        }
                     }
                 }
                 
@@ -135,7 +106,7 @@ struct SettingView: View {
                 }
             }
         }
-        .navigationTitle("설정")
+            .navigationTitle("설정")
     }
     
     func deleteAccount() {

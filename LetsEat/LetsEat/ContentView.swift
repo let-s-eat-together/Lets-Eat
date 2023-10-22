@@ -43,7 +43,7 @@ struct ContentView: View {
             }
         }
         .onAppear {
-            login(deviceId) { tk, uid in
+            login(deviceId) { uid, name, tk in
                 isLoginSuccess = false
                 if uid == -1 {
                     print("sign up 진행")
@@ -52,9 +52,7 @@ struct ContentView: View {
                 } else { // login success
                     print("token \(tk)")
                     print("userId \(uid)")
-                    userManager.setInfo(id: uid, token: tk)
-//                    let user = User(id: uid, token: tk, nickname: name)
-//                    userManager.saveUser(user)
+                    userManager.setInfo(id: uid, username: name, token: tk)
                     planManager.fetchPlans()
                     messageManager.fetchMessages()
                     isLoginSuccess = true
@@ -69,7 +67,7 @@ struct ContentView: View {
         }
     }
     
-    private func login(_ deviceId: String, completion: @escaping (String, Int)->Void) {
+    private func login(_ deviceId: String, completion: @escaping (Int, String, String)->Void) {
         //디바이스 아이디로 로그인 요청
         //있으면 유저 아이디 받아옴 -> 로그인 성공
         //없으면 -1을 받음 -> 로그인 실패, 닉네임 생성(signUp)
@@ -101,9 +99,10 @@ struct ContentView: View {
             }
         }
         .responseDecodable(of: Login.self, decoder: decoder) { response in
-            token = response.value?.token ?? "fail"
             userId = response.value?.userId ?? -2
-            completion(token, userId)
+            token = response.value?.token ?? "fail"
+            nickname = response.value?.name ?? "default"
+            completion(userId, nickname, token)
         }
     }
 }
