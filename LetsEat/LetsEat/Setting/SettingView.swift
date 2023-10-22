@@ -121,7 +121,7 @@ struct SettingView: View {
                         Alert(title: Text("회원 탈퇴"),
                               message: Text("탈퇴 하시겠습니까?"),
                               primaryButton: Alert.Button.default(Text("네")) {
-                            withDraw()
+                            deleteAccount()
                             if !KeychainManager().deleteDeviceID() {
                                 print("삭제 오류")
                             }
@@ -138,8 +138,8 @@ struct SettingView: View {
         .navigationTitle("설정")
     }
     
-    func withDraw() {
-        let url = "http://34.22.94.135:8080/withdraw"
+    func deleteAccount() {
+        let url = "http://34.22.94.135:8080/deleteUser"
         
         let params: Parameters = ["user_id": userManager.userInfo.id]
         
