@@ -106,7 +106,7 @@ struct SettingView: View {
                 }
             }
         }
-            .navigationTitle("설정")
+        .navigationTitle("설정")
     }
     
     func deleteAccount() {
