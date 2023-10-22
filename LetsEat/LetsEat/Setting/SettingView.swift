@@ -114,7 +114,10 @@ struct SettingView: View {
         
         let params: Parameters = ["user_id": userManager.userInfo.id]
         
+        let accessToken = userManager.userInfo.token
+        
         let headers: HTTPHeaders = [
+            "Authorization": "Bearer \(accessToken)",
             "Content-Type": "application/json"
         ]
         
