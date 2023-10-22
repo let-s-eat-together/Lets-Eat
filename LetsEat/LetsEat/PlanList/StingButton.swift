@@ -19,7 +19,7 @@ struct StingButton: View {
             Image(systemName: "hand.point.left.fill")
                 .foregroundColor(.primary)
         }
-        .alert(isPresented: $isSting) { // 마지막 이름 나오는 버그 고치기
+        .alert(isPresented: $isSting) {
             Alert(title: Text("콕 찔러보기"),
                   message: Text("\(otherUserName)님을 콕 찌르시겠습니까?"),
                   primaryButton: Alert.Button.default(Text("네")) {
@@ -29,8 +29,8 @@ struct StingButton: View {
         }
     }
     
-    func sendMessage(to who: String) { // 실패시 에러처리
-        let url = "http://34.22.94.135:8080/sting/"
+    func sendMessage(to who: String) {
+        let url = "http://34.22.94.135:8080/sting/\(planId)"
         
         let accessToken = userManager.userInfo.token
         
@@ -44,16 +44,15 @@ struct StingButton: View {
                    encoding: URLEncoding.default,
                    headers: headers)
         .validate(statusCode: 200..<600)
-        .responseDecodable(of: [Message].self, decoder: JSONDecoder() ) { response in
+        .responseData { response in
             debugPrint(response)
             switch response.result {
             case .success:
                 print("send to \(who) 콕!")
-            case .failure(let error):
-                print(error)
+            case .failure:
+                print(response.error.debugDescription)
             }
         }
-
     }
 }
 
