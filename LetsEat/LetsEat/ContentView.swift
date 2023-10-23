@@ -8,18 +8,14 @@ import Alamofire
 struct ContentView: View {
     @State private var isLoading: Bool = true
     @State private var isLoginSuccess: Bool = false
-    
-    @State var token: String = ""
-    @State var userId: Int = -1
-    @State var nickname: String = ""
-    
+
     @State var userManager = UserManager.shared
     @State var planManager = PlanManager.shared
     @State var messageManager = MessageManager.shared
     
     let deviceId = KeychainManager().getDeviceID()
     // test account
-//     let deviceId = "device_id"
+//     let deviceId = "device_id1"
     
     @ObservedObject var appState = AppState()
     
@@ -98,6 +94,9 @@ struct ContentView: View {
             }
         }
         .responseDecodable(of: Login.self, decoder: decoder) { response in
+            var token: String = ""
+            var userId: Int = -1
+            var nickname: String = ""
             userId = response.value?.userId ?? -2
             token = response.value?.token ?? "fail"
             nickname = response.value?.name ?? "default"
