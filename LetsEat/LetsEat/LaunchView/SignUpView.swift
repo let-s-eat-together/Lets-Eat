@@ -13,12 +13,14 @@ struct SignUp: Decodable {
 struct SignUpView: View {
     @State var username: String = ""
     @State var userManager = UserManager.shared
+    @State var planManager = PlanManager.shared
+    @State var messageManager = MessageManager.shared
     
     @State private var isOK: Bool = false
     @State private var showAlert = false
     
     @State var userId: Int = -1
-    let deviceId = KeychainManager().getDeviceID()
+    let deviceId = ContentView().deviceId
     var nicknameGenerated: () -> Void
     let regex = "^[^\\s]+$"
     
@@ -115,7 +117,15 @@ struct SignUpView: View {
             if userId == -2 {
                 print("signup: data error")
             } else { // signup success
-                print(userId)
+                print("회원가입 성공")
+                print("userId \(userId)")
+                ContentView().login(deviceId) { uid, name, tk in
+                    print("token \(tk)")
+                    print("userId \(uid)")
+                    userManager.setInfo(id: uid, username: name, token: tk)
+                    planManager.fetchPlans()
+                    messageManager.fetchMessages()
+                }
             }
         }
     }

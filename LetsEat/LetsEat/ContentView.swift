@@ -19,7 +19,7 @@ struct ContentView: View {
     
     let deviceId = KeychainManager().getDeviceID()
     // test account
-//     let deviceId = "device_id1"
+//     let deviceId = "device_id"
     
     @ObservedObject var appState = AppState()
     
@@ -44,7 +44,6 @@ struct ContentView: View {
         }
         .onAppear {
             login(deviceId) { uid, name, tk in
-                isLoginSuccess = false
                 if uid == -1 {
                     print("sign up 진행")
                 } else if uid == -2 {
@@ -67,7 +66,7 @@ struct ContentView: View {
         }
     }
     
-    private func login(_ deviceId: String, completion: @escaping (Int, String, String)->Void) {
+    func login(_ deviceId: String, completion: @escaping (Int, String, String)->Void) {
         //디바이스 아이디로 로그인 요청
         //있으면 유저 아이디 받아옴 -> 로그인 성공
         //없으면 -1을 받음 -> 로그인 실패, 닉네임 생성(signUp)
@@ -93,7 +92,7 @@ struct ContentView: View {
             debugPrint(response)
             switch response.result {
             case .success:
-                print("성공")
+                print("로그인 성공")
             case .failure:
                 print(response.error.debugDescription)
             }
