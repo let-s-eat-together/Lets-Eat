@@ -11,7 +11,6 @@ struct CameraView: View {
     @State private var isShowingScanner = false
     @State private var isCreate = false
     @State var userManager = UserManager.shared
-    @State var tokenManager = TokenManager.shared
     
     var body: some View {
         Button {
@@ -38,7 +37,6 @@ struct CameraView: View {
         case .success(let data):
             let details = data.string.components(separatedBy: "\n")
             guard details.count == 2 else { return }
-//            print(details)
             let expirationDate = details[0]
             let senderId = details[1]
             sendPlanData(expirationDate, senderId)
@@ -63,13 +61,13 @@ struct CameraView: View {
             "sender_id": Int(senderId) ?? 0,
             "receiver_id": 0
         ]
-                
+        
         AF.request(url,
                    method: .post,
                    parameters: params,
                    encoding: JSONEncoding.default,
                    headers: headers)
-//        .validate(statusCode: 200..<300)
+        .validate(statusCode: 200..<300)
         .responseData { response in
             debugPrint(response)
             switch response.result {

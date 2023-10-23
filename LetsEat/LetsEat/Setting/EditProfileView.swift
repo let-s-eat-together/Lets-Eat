@@ -13,7 +13,7 @@ struct EditProfileView: View {
     let regex = "^[^\\s]+$"
     let userId = UserManager.shared.getUser()?.id ?? 0
     @Environment(\.presentationMode) var presentationMode
-
+    
     
     var body: some View {
         VStack {
@@ -93,12 +93,12 @@ struct EditProfileView: View {
             "user_id": userId
         ]
         
-        AF.request(url, 
+        AF.request(url,
                    method: .put,
                    parameters: parameters,
                    encoding: JSONEncoding.default,
                    headers: headers)
-            .validate(statusCode: 200..<300)
+        .validate(statusCode: 200..<300)
     }
 }
 

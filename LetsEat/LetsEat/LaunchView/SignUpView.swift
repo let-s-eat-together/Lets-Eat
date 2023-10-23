@@ -71,7 +71,6 @@ struct SignUpView: View {
                     let nickname = username
                     signUp(deviceId, nickname)
                     nicknameGenerated()
-//                    userManager.setName(nickname: nickname)
                 } else {
                     showAlert = true
                 }

@@ -16,10 +16,6 @@ struct SettingView: View {
     @State private var isOut: Bool = false
     @State private var hasDelete: Bool = false
     
-    var isNicknameValid: Bool {
-        return editedNickname.count >= 1
-    }
-    
     var body: some View {
         VStack(alignment: .leading) {
             Form {

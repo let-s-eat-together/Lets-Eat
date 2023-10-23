@@ -17,7 +17,7 @@
 		085ED2E62AAF51F400A5CE24 /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085ED2E22AAF51F400A5CE24 /* LaunchScreenView.swift */; };
 		085ED2EA2AAF520F00A5CE24 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085ED2E82AAF520F00A5CE24 /* AppState.swift */; };
 		088211B62ACBF48000763BF6 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088211B52ACBF48000763BF6 /* EditProfileView.swift */; };
-		0891105D2AC191D300C31063 /* Camera+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0891105C2AC191D300C31063 /* Camera+ext.swift */; };
+		0891105D2AC191D300C31063 /* Date+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0891105C2AC191D300C31063 /* Date+ext.swift */; };
 		0891105F2AC1939B00C31063 /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0891105E2AC1939B00C31063 /* FloatingButton.swift */; };
 		089110622AC1946100C31063 /* StingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089110612AC1946100C31063 /* StingButton.swift */; };
 		089110642AC195B700C31063 /* Plan+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089110632AC195B700C31063 /* Plan+ext.swift */; };
@@ -26,6 +26,7 @@
 		08B608182AB8413800542C4C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 08B608172AB8413800542C4C /* Alamofire */; };
 		08B6081A2AB9300B00542C4C /* PlanManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B608192AB9300B00542C4C /* PlanManager.swift */; };
 		08B6081C2AB9318300542C4C /* MessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B6081B2AB9318300542C4C /* MessageManager.swift */; };
+		08BBF6972AE60C56004CE5AE /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BBF6962AE60C56004CE5AE /* Login.swift */; };
 		08C851D12AC6EC880011C4E5 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C851D02AC6EC880011C4E5 /* UserManager.swift */; };
 		08D333C82A9C459000CE6571 /* LetsEatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D333C72A9C459000CE6571 /* LetsEatApp.swift */; };
 		08D333CA2A9C459000CE6571 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D333C92A9C459000CE6571 /* ContentView.swift */; };
@@ -65,13 +66,14 @@
 		085ED2E22AAF51F400A5CE24 /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
 		085ED2E82AAF520F00A5CE24 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		088211B52ACBF48000763BF6 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
-		0891105C2AC191D300C31063 /* Camera+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Camera+ext.swift"; sourceTree = "<group>"; };
+		0891105C2AC191D300C31063 /* Date+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+ext.swift"; sourceTree = "<group>"; };
 		0891105E2AC1939B00C31063 /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
 		089110612AC1946100C31063 /* StingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StingButton.swift; sourceTree = "<group>"; };
 		089110632AC195B700C31063 /* Plan+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plan+ext.swift"; sourceTree = "<group>"; };
 		08B6080F2AB5CB6A00542C4C /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		08B608192AB9300B00542C4C /* PlanManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanManager.swift; sourceTree = "<group>"; };
 		08B6081B2AB9318300542C4C /* MessageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageManager.swift; sourceTree = "<group>"; };
+		08BBF6962AE60C56004CE5AE /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		08C851D02AC6EC880011C4E5 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		08D333C42A9C459000CE6571 /* LetsEat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LetsEat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08D333C72A9C459000CE6571 /* LetsEatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetsEatApp.swift; sourceTree = "<group>"; };
@@ -154,7 +156,6 @@
 		085ED2EC2AAF521700A5CE24 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				085ED2E82AAF520F00A5CE24 /* AppState.swift */,
 				F33DC3A02ABA9F8900CDDFD9 /* KeychainManager.swift */,
 				08C851D02AC6EC880011C4E5 /* UserManager.swift */,
 				08B608192AB9300B00542C4C /* PlanManager.swift */,
@@ -169,6 +170,7 @@
 				085ED2CD2AAF502E00A5CE24 /* Message.swift */,
 				085ED2CE2AAF502E00A5CE24 /* Plan.swift */,
 				F302B73D2AC274FA009BC603 /* User.swift */,
+				08BBF6962AE60C56004CE5AE /* Login.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -177,7 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				08B6080F2AB5CB6A00542C4C /* CameraView.swift */,
-				0891105C2AC191D300C31063 /* Camera+ext.swift */,
+				0891105C2AC191D300C31063 /* Date+ext.swift */,
 			);
 			path = Camera;
 			sourceTree = "<group>";
@@ -211,6 +213,7 @@
 				083A26B82AAEC97F00CC37EF /* PlanList */,
 				0895D2FD2AA04FA000E6E74E /* Model */,
 				08D333C72A9C459000CE6571 /* LetsEatApp.swift */,
+				085ED2E82AAF520F00A5CE24 /* AppState.swift */,
 				08D333C92A9C459000CE6571 /* ContentView.swift */,
 				08D333CB2A9C459100CE6571 /* Assets.xcassets */,
 				083A26B52AAEC4D900CC37EF /* Info.plist */,
@@ -375,11 +378,12 @@
 				088211B62ACBF48000763BF6 /* EditProfileView.swift in Sources */,
 				085ED2D52AAF505600A5CE24 /* SetPlanView.swift in Sources */,
 				085ED2D02AAF502E00A5CE24 /* Plan.swift in Sources */,
-				0891105D2AC191D300C31063 /* Camera+ext.swift in Sources */,
+				0891105D2AC191D300C31063 /* Date+ext.swift in Sources */,
 				085ED2D82AAF506000A5CE24 /* SettingView.swift in Sources */,
 				089110642AC195B700C31063 /* Plan+ext.swift in Sources */,
 				08D333CA2A9C459000CE6571 /* ContentView.swift in Sources */,
 				08B6081C2AB9318300542C4C /* MessageManager.swift in Sources */,
+				08BBF6972AE60C56004CE5AE /* Login.swift in Sources */,
 				089110622AC1946100C31063 /* StingButton.swift in Sources */,
 				08D333C82A9C459000CE6571 /* LetsEatApp.swift in Sources */,
 				085ED2CF2AAF502E00A5CE24 /* Message.swift in Sources */,

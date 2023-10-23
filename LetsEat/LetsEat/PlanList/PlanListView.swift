@@ -41,6 +41,10 @@ struct PlanListView: View {
                             .foregroundColor(.primary)
                     }
                 }
+                .refreshable {
+                    planManager.fetchPlans()
+                }
+
                 .zIndex(0)
                 
                 HStack {

@@ -16,9 +16,3 @@ struct User: Identifiable, Hashable, Codable {
     }
 }
 
-struct Login: Decodable {
-    let token: String
-    let userId: Int
-    let name: String
-}
-
