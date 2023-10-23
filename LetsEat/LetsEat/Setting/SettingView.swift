@@ -58,7 +58,18 @@ struct SettingView: View {
                         Text("detail")
                     }
                     NavigationLink("버전 정보") {
-                        Text("현재 버전 1.0.0")
+                        VStack {
+                            Image("bab")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                                .padding()
+                            Text("현재 버전 1.0.0")
+                            
+                            Text("최선 버전 입니다.")
+                                .font(.caption)
+//                                .font(.system(size: 20))
+                        }
                     }
                 }
                 

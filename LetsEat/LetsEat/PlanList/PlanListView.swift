@@ -44,7 +44,7 @@ struct PlanListView: View {
                 .refreshable {
                     planManager.fetchPlans()
                 }
-
+                
                 .zIndex(0)
                 
                 HStack {
@@ -61,6 +61,8 @@ struct PlanListView: View {
 
 struct planItem: View {
     var planData: Plan
+    @State var isDelete: Bool = false
+    @State var isMet: Bool = false
     
     var body: some View {
         HStack {
@@ -86,7 +88,9 @@ struct planItem: View {
                 .buttonStyle(.plain)
         }
         .padding()
-        .background(Rectangle().fill(Color("Item Color")))
+        .background(Rectangle().fill(
+            isDelete ? Color.secondary : Color("Item Color")
+        ))
         .cornerRadius(15)
         .shadow(color: .gray, radius: 3, x: 2, y: 2)
     }
