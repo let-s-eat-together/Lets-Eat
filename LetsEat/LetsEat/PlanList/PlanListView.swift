@@ -76,8 +76,8 @@ struct planItem: View {
             VStack(alignment: .leading) {
                 Text(planData.otherUserName)
                     .font(.title)
-                let day = Date().calcDate(from: planData.expirationDate.toDay() ?? Date.now)
-                let txt = makeTxt(day)
+                let day = Date().remainDays(for: planData.expirationDate.toDate() ?? Date.now)
+                let txt = makeTxt(day!)
                 Text(txt)
                     .font(.caption)
                     .foregroundColor(.secondary)
@@ -96,10 +96,14 @@ struct planItem: View {
     }
     
     private func makeTxt(_ day: Int) -> String {
-        if day < 0 {
-            return "약속일이 \(-day)일 지났습니다.."
+        if day == nil {
+            return "error"
         } else {
-            return "약속까지 \(day)일 남았습니다.."
+            if day < 0 {
+                return "약속일이 \(-day)일 지났습니다.."
+            } else {
+                return "약속까지 \(day)일 남았습니다.."
+            }
         }
     }
 }

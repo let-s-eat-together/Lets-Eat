@@ -4,7 +4,7 @@
 
 import Foundation
 
-struct User: Identifiable, Hashable, Codable {
+struct User: Codable {
     var id: Int
     var username: String
     var token: String

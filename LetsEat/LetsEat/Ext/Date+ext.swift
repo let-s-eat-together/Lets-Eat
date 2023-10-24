@@ -18,28 +18,19 @@ extension Date {
         dateFormatter.timeZone = .current
         return dateFormatter.string(from: self)
     }
-}
-
-extension String {
-    func toDate() -> Date? {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        dateFormatter.timeZone = .current
-        if let date = dateFormatter.date(from: self) {
-            return date
-        } else {
-            return nil
-        }
+    
+    func remainDays(for date: Date) -> Int? {
+        let components = Calendar.current.dateComponents([.day],
+                                                         from: Date(), to: date)
+        return components.day
     }
     
-    func toDay() -> Date? {
+    
+    func dateFormat() -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.dateFormat = "yy년 MM월 dd일"
         dateFormatter.timeZone = .current
-        if let date = dateFormatter.date(from: self) {
-            return date
-        } else {
-            return nil
-        }
+        return dateFormatter.string(from: self)
     }
 }
+

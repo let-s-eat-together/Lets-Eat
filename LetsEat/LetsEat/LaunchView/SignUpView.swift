@@ -20,7 +20,6 @@ struct SignUpView: View {
     @State private var showAlert = false
     
     @State var userId: Int = -1
-    let deviceId = ContentView().deviceId
     var nicknameGenerated: () -> Void
     let regex = "^[^\\s]+$"
     
@@ -71,6 +70,7 @@ struct SignUpView: View {
             Button {
                 if isOK {
                     let nickname = username
+                    let deviceId = KeychainManager().getDeviceID()
                     signUp(deviceId, nickname)
                     nicknameGenerated()
                 } else {

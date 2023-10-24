@@ -6,18 +6,17 @@ import SwiftUI
 import Alamofire
 
 struct ContentView: View {
+    @ObservedObject var appState = AppState()
+    
     @State private var isLoading: Bool = true
     @State private var isLoginSuccess: Bool = false
-
+    
     @State var userManager = UserManager.shared
     @State var planManager = PlanManager.shared
     @State var messageManager = MessageManager.shared
     
-    let deviceId = KeychainManager().getDeviceID()
     // test account
-//     let deviceId = "device_id1"
-    
-    @ObservedObject var appState = AppState()
+    // let deviceId = "device_id1"
     
     var body: some View {
         ZStack {
@@ -39,6 +38,7 @@ struct ContentView: View {
             }
         }
         .onAppear {
+            let deviceId = KeychainManager().getDeviceID()
             login(deviceId) { uid, name, tk in
                 if uid == -1 {
                     print("sign up 진행")
@@ -94,13 +94,25 @@ struct ContentView: View {
             }
         }
         .responseDecodable(of: Login.self, decoder: decoder) { response in
-            var token: String = ""
-            var userId: Int = -1
-            var nickname: String = ""
-            userId = response.value?.userId ?? -2
-            token = response.value?.token ?? "fail"
-            nickname = response.value?.name ?? "default"
+            let userId = response.value?.userId ?? -2
+            let token = response.value?.token ?? "fail"
+            let nickname = response.value?.name ?? "default"
             completion(userId, nickname, token)
+        }
+    }
+    
+    func loginProcess(userId uid: Int, token tk: String, username name: String) -> Void {
+        if uid == -1 {
+            print("sign up 진행")
+        } else if uid == -2 {
+            print("login: data error")
+        } else { // login success
+            print("token \(tk)")
+            print("userId \(uid)")
+            userManager.setInfo(id: uid, username: name, token: tk)
+            planManager.fetchPlans()
+            messageManager.fetchMessages()
+            isLoginSuccess = true
         }
     }
 }

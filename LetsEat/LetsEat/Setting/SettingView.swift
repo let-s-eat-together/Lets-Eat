@@ -11,8 +11,6 @@ struct SettingView: View {
     @State var userManager = UserManager.shared
     
     @State private var isAlarmOn: Bool = false
-    @State private var editedNickname: String = ""
-    @State private var isEditingNickname: Bool = false
     @State private var isOut: Bool = false
     @State private var hasDelete: Bool = false
     
@@ -68,83 +66,21 @@ struct SettingView: View {
                             
                             Text("최선 버전 입니다.")
                                 .font(.caption)
-//                                .font(.system(size: 20))
                         }
                     }
                 }
                 
                 Section {
-                    Button {
-                        isOut.toggle()
-                    } label: {
-                        Text("로그아웃")
-                    }
-                    .alert(isPresented: $isOut) {
-                        Alert(title: Text("나가기"),
-                              message: Text("앱을 종료 하시겠습니까?"),
-                              primaryButton: Alert.Button.default(Text("네")) {
-                            UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                exit(0)
-                            }
-                        },
-                        secondaryButton: Alert.Button.destructive(Text("아니요")))
-                    }
-                    Button {
-                        hasDelete.toggle()
-                    } label: {
-                        Text("탈퇴하기")
-                    }
-                    .alert(isPresented: $hasDelete) {
-                        Alert(title: Text("회원 탈퇴"),
-                              message: Text("탈퇴 하시겠습니까?"),
-                              primaryButton: Alert.Button.default(Text("네")) {
-                            deleteAccount()
-                            if !KeychainManager().deleteDeviceID() {
-                                print("삭제 오류")
-                            }
-                            UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                exit(0)
-                            }
-                        },
-                        secondaryButton: Alert.Button.destructive(Text("아니요")))
-                    }
+                    LogOutButton(isOut: $isOut)
+                    
+                    WithdrawalButton(hasDelete: $hasDelete)
                 }
             }
         }
         .navigationTitle("설정")
     }
-    
-    func deleteAccount() {
-        let url = "http://34.22.94.135:8080/deleteUser"
-        
-        let params: Parameters = ["user_id": userManager.userInfo.id]
-        
-        let accessToken = userManager.userInfo.token
-        
-        let headers: HTTPHeaders = [
-            "Authorization": "Bearer \(accessToken)",
-            "Content-Type": "application/json"
-        ]
-        
-        AF.request(url,
-                   method: .put,
-                   parameters: params,
-                   encoding: URLEncoding.default,
-                   headers: headers)
-        .validate(statusCode: 200..<600)
-        .responseData { response in
-            debugPrint(response)
-            switch response.result {
-            case .success:
-                print("탈퇴 완료")
-            case .failure:
-                print(response.error.debugDescription)
-            }
-        }
-    }
 }
+
 
 struct SettingView_Previews: PreviewProvider {
     static var previews: some View {

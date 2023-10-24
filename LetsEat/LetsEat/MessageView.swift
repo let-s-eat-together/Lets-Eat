@@ -22,7 +22,7 @@ struct MessageView: View {
                     Spacer()
                     
                     VStack {
-                        Text(timeElapsedString(for: item.creationDate.toDate() ?? Date.now))
+                        Text(timeElapsedString(for: item.creationDate.toDateTime() ?? Date.now))
                             .font(.system(.caption))
                             .foregroundColor(.gray)
                     }

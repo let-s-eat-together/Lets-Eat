@@ -31,5 +31,9 @@ class UserManager: ObservableObject {
         userInfo.username = username
         userInfo.token = token
     }
+    
+    func setName(name username: String) {
+        userInfo.username = username
+    }
 }
 

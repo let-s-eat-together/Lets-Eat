@@ -8,6 +8,7 @@ import Combine
 
 class MessageManager: ObservableObject {
     static let shared = MessageManager()
+    
     @State var userManager = UserManager.shared
     
     @Published var messageList: [Message] = []
