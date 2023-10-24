@@ -4,14 +4,15 @@
 
 import Foundation
 
-struct User: Identifiable, Hashable, Codable {
+struct User: Codable {
     var id: Int
     var username: String
     var token: String
-}
-
-struct Login: Decodable {
-    let token: String
-    let userId: Int
+    
+    enum CodingKeys: String, CodingKey {
+        case id = "user_id"
+        case username = "name"
+        case token = "token"
+    }
 }
 

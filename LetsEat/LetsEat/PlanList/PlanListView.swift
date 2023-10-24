@@ -41,6 +41,10 @@ struct PlanListView: View {
                             .foregroundColor(.primary)
                     }
                 }
+                .refreshable {
+                    planManager.fetchPlans()
+                }
+                
                 .zIndex(0)
                 
                 HStack {
@@ -57,6 +61,8 @@ struct PlanListView: View {
 
 struct planItem: View {
     var planData: Plan
+    @State var isDelete: Bool = false
+    @State var isMet: Bool = false
     
     var body: some View {
         HStack {
@@ -70,8 +76,8 @@ struct planItem: View {
             VStack(alignment: .leading) {
                 Text(planData.otherUserName)
                     .font(.title)
-                let day = Date().calcDate(from: planData.expirationDate.toDay() ?? Date.now)
-                let txt = makeTxt(day)
+                let day = Date().remainDays(for: planData.expirationDate.toDate() ?? Date.now)
+                let txt = makeTxt(day!)
                 Text(txt)
                     .font(.caption)
                     .foregroundColor(.secondary)
@@ -82,16 +88,22 @@ struct planItem: View {
                 .buttonStyle(.plain)
         }
         .padding()
-        .background(Rectangle().fill(Color("Item Color")))
+        .background(Rectangle().fill(
+            isDelete ? Color.secondary : Color("Item Color")
+        ))
         .cornerRadius(15)
         .shadow(color: .gray, radius: 3, x: 2, y: 2)
     }
     
     private func makeTxt(_ day: Int) -> String {
-        if day < 0 {
-            return "약속일이 \(-day)일 지났습니다.."
+        if day == nil {
+            return "error"
         } else {
-            return "약속까지 \(day)일 남았습니다.."
+            if day < 0 {
+                return "약속일이 \(-day)일 지났습니다.."
+            } else {
+                return "약속까지 \(day)일 남았습니다.."
+            }
         }
     }
 }

@@ -8,9 +8,9 @@ import Alamofire
 
 class PlanManager: ObservableObject {
     static let shared = PlanManager()
-
+    
     @State var userManager = UserManager.shared
-        
+    
     @Published var planList: [Plan] = []
     
     func fetchPlans() {

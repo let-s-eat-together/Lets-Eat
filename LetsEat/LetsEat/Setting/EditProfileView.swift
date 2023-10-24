@@ -14,7 +14,7 @@ struct EditProfileView: View {
     let regex = "^[^\\s]+$"
 
     @Environment(\.presentationMode) var presentationMode
-
+    
     
     var body: some View {
         VStack {
@@ -96,7 +96,7 @@ struct EditProfileView: View {
             "user_name": username
         ]
         
-        AF.request(url, 
+        AF.request(url,
                    method: .put,
                    parameters: parameters,
                    encoding: JSONEncoding.default,

@@ -3,13 +3,17 @@
 //  LetsEat
 
 import SwiftUI
+import Alamofire
 
 struct SettingView: View {
     @AppStorage("isDarkModeOn") private var isDarkModeOn = false
     
     @State var userManager = UserManager.shared
+  
     @State private var isAlarmOn: Bool = false
-
+    @State private var isOut: Bool = false
+    @State private var hasDelete: Bool = false
+    
     var body: some View {
         VStack(alignment: .leading) {
             Form {
@@ -21,8 +25,7 @@ struct SettingView: View {
                             .frame(width: 40, height: 40)
                             .padding(.all, 15)
                             .clipShape(Circle())
-                        
-                        Text(userManager.getUser()?.username ?? "default")
+                        Text(userManager.userInfo.username)
                             .font(.title2)
                     }
                 }
@@ -53,27 +56,31 @@ struct SettingView: View {
                         Text("detail")
                     }
                     NavigationLink("버전 정보") {
-                        Text("현재 버전 1.0.0")
+                        VStack {
+                            Image("bab")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                                .padding()
+                            Text("현재 버전 1.0.0")
+                            
+                            Text("최선 버전 입니다.")
+                                .font(.caption)
+                        }
                     }
                 }
                 
                 Section {
-                    Button {
-                        
-                    } label: {
-                        Text("로그아웃")
-                    }
-                    Button {
-                        
-                    } label: {
-                        Text("회원 탈퇴")
-                    }
+                    LogOutButton(isOut: $isOut)
+                    
+                    WithdrawalButton(hasDelete: $hasDelete)
                 }
             }
         }
         .navigationTitle("설정")
     }
 }
+
 
 struct SettingView_Previews: PreviewProvider {
     static var previews: some View {
