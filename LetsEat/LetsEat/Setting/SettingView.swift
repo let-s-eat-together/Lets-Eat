@@ -1,5 +1,5 @@
 //
-//  MessageManager.swift
+//  settingView.swift
 //  LetsEat
 
 import SwiftUI
@@ -8,15 +8,8 @@ struct SettingView: View {
     @AppStorage("isDarkModeOn") private var isDarkModeOn = false
     
     @State var userManager = UserManager.shared
-    
     @State private var isAlarmOn: Bool = false
-    @State private var editedNickname: String = ""
-    @State private var isEditingNickname: Bool = false
-    
-    var isNicknameValid: Bool {
-        return editedNickname.count >= 1
-    }
-    
+
     var body: some View {
         VStack(alignment: .leading) {
             Form {
@@ -31,34 +24,6 @@ struct SettingView: View {
                         
                         Text(userManager.getUser()?.username ?? "default")
                             .font(.title2)
-                        
-                        
-                        //                        VStack(alignment: .leading) {
-                        //                            if isEditingNickname {
-                        //                                TextField("변경할 이름", text: $editedNickname)
-                        //                                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                        //                                    .frame(width: 160)
-                        //                                    .onAppear {
-                        //                                        editedNickname = userManager.userInfo.nickname
-                        //                                    }
-                        //                            } else {
-                        //                                Text(userManager.userInfo.nickname)
-                        //                                //                                Text(nickname)
-                        //                                //                                    .font(.headline)
-                        //                            }
-                        //                        }
-                        //                        Spacer()
-                        //                        Button(action: {
-                        //                            isEditingNickname.toggle()
-                        //                            if !isEditingNickname {
-                        //                                if isNicknameValid {
-                        //                                    //                                    nickname = editedNickname
-                        //                                }
-                        //                            }
-                        //                        }) {
-                        //                            Text(isEditingNickname ? "완료" : "프로필 수정")
-                        //                                .foregroundColor(.blue)
-                        //                        }
                     }
                 }
                 
