@@ -1,5 +1,5 @@
 //
-//  MessageManager.swift
+//  settingView.swift
 //  LetsEat
 
 import SwiftUI
@@ -9,7 +9,7 @@ struct SettingView: View {
     @AppStorage("isDarkModeOn") private var isDarkModeOn = false
     
     @State var userManager = UserManager.shared
-    
+  
     @State private var isAlarmOn: Bool = false
     @State private var isOut: Bool = false
     @State private var hasDelete: Bool = false

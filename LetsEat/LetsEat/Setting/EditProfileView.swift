@@ -8,10 +8,11 @@ import Alamofire
 struct EditProfileView: View {
     @State private var isOK: Bool = false
     @State private var showAlert = false
-    
+    @State var userManager = UserManager.shared
     @State var username: String = ""
+    
     let regex = "^[^\\s]+$"
-    let userId = UserManager.shared.getUser()?.id ?? 0
+
     @Environment(\.presentationMode) var presentationMode
     
     
@@ -62,7 +63,7 @@ struct EditProfileView: View {
             Button {
                 if isOK {
                     let nickname = username
-                    updateNickname(userId, nickname)
+                    updateNickname(nickname)
                     presentationMode.wrappedValue.dismiss()
                 } else {
                     showAlert = true
@@ -81,16 +82,18 @@ struct EditProfileView: View {
         }
     }
     
-    private func updateNickname(_ userId: Int, _ username: String) {
+    private func updateNickname(_ username: String) {
         let url = "http://34.22.94.135:8080/rename"
         
+        let accessToken = userManager.userInfo.token
+        
         let headers : HTTPHeaders = [
+            "Authorization": "Bearer \(accessToken)",
             "Content-Type": "application/json"
         ]
         
         let parameters: Parameters = [
-            "user_name": username,
-            "user_id": userId
+            "user_name": username
         ]
         
         AF.request(url,
@@ -99,6 +102,15 @@ struct EditProfileView: View {
                    encoding: JSONEncoding.default,
                    headers: headers)
         .validate(statusCode: 200..<300)
+        .responseData { response in
+            debugPrint(response)
+            switch response.result {
+                case .success:
+                    print("이름이 변경되었습니다.")
+                case .failure:
+                    print(response.error.debugDescription)
+            }
+        }
     }
 }
 
