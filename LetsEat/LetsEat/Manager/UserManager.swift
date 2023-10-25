@@ -3,10 +3,13 @@
 //  LetsEat
 
 import Foundation
+import Combine
 
 class UserManager: ObservableObject {
     private let USER_KEY = "USER_KEY"
     static let shared = UserManager()
+    
+    @Published var userInfo: User = User(id: -1, username: "", token: "")
     
     //    var userInfo: User = User(
     
@@ -23,8 +26,6 @@ class UserManager: ObservableObject {
         }
         return nil
     }
-    
-    var userInfo: User = User(id: -1, username: "", token: "")
     
     func setInfo(id: Int, username: String, token: String) {
         userInfo.id = id
