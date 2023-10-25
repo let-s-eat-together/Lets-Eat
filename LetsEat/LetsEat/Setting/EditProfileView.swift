@@ -107,6 +107,7 @@ struct EditProfileView: View {
             switch response.result {
                 case .success:
                     print("이름이 변경되었습니다.")
+                    userManager.setName(name: username)
                 case .failure:
                     print(response.error.debugDescription)
             }
