@@ -33,7 +33,6 @@
 		08D333C82A9C459000CE6571 /* LetsEatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D333C72A9C459000CE6571 /* LetsEatApp.swift */; };
 		08D333CA2A9C459000CE6571 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D333C92A9C459000CE6571 /* ContentView.swift */; };
 		08D333CC2A9C459100CE6571 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08D333CB2A9C459100CE6571 /* Assets.xcassets */; };
-		08D333CF2A9C459100CE6571 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08D333CE2A9C459100CE6571 /* Preview Assets.xcassets */; };
 		08D333F42A9C47C700CE6571 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D333F32A9C47C700CE6571 /* MessageView.swift */; };
 		F302B73E2AC274FA009BC603 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F302B73D2AC274FA009BC603 /* User.swift */; };
 		F33DC3A12ABA9F8900CDDFD9 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33DC3A02ABA9F8900CDDFD9 /* KeychainManager.swift */; };
@@ -83,10 +82,9 @@
 		08D333C72A9C459000CE6571 /* LetsEatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetsEatApp.swift; sourceTree = "<group>"; };
 		08D333C92A9C459000CE6571 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		08D333CB2A9C459100CE6571 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		08D333CE2A9C459100CE6571 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		08D333D42A9C459100CE6571 /* LetsEatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LetsEatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		08D333DE2A9C459100CE6571 /* LetsEatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LetsEatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		08D333F32A9C47C700CE6571 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MessageView.swift; path = LetsEat/MessageView.swift; sourceTree = SOURCE_ROOT; };
+		08D333F32A9C47C700CE6571 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		F302B73D2AC274FA009BC603 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F33DC3A02ABA9F8900CDDFD9 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -223,17 +221,8 @@
 				08D333C92A9C459000CE6571 /* ContentView.swift */,
 				08D333CB2A9C459100CE6571 /* Assets.xcassets */,
 				083A26B52AAEC4D900CC37EF /* Info.plist */,
-				08D333CD2A9C459100CE6571 /* Preview Content */,
 			);
 			path = LetsEat;
-			sourceTree = "<group>";
-		};
-		08D333CD2A9C459100CE6571 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				08D333CE2A9C459100CE6571 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -348,7 +337,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				08D333CF2A9C459100CE6571 /* Preview Assets.xcassets in Resources */,
 				08D333CC2A9C459100CE6571 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -556,8 +544,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"LetsEat/Preview Content\"";
-				DEVELOPMENT_TEAM = 3WDHBTFL29;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = 7HY82828Q6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LetsEat/Info.plist;
@@ -587,8 +575,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"LetsEat/Preview Content\"";
-				DEVELOPMENT_TEAM = 3WDHBTFL29;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = 7HY82828Q6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LetsEat/Info.plist;

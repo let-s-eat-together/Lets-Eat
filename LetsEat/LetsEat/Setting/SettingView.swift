@@ -8,11 +8,13 @@ import Alamofire
 struct SettingView: View {
     @AppStorage("isDarkModeOn") private var isDarkModeOn = false
     
-    @ObservedObject var userManager = UserManager.shared
+
+    @StateObject var userManager = UserManager.shared
   
     @State private var isAlarmOn: Bool = false
     @State private var isOut: Bool = false
     @State private var hasDelete: Bool = false
+    @State var isChanged: Bool = false
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -25,14 +27,14 @@ struct SettingView: View {
                             .frame(width: 40, height: 40)
                             .padding(.all, 15)
                             .clipShape(Circle())
-                        Text(userManager.userInfo.username)
+                        Text(userManager.getName())
                             .font(.title2)
                     }
                 }
                 
                 Section {
                     NavigationLink("프로필 수정") {
-                        EditProfileView()
+                        EditProfileView(isChanged: $isChanged)
                     }
                 }
                 
@@ -77,6 +79,12 @@ struct SettingView: View {
                 }
             }
         }
+        .alert(isPresented: $isChanged, content: {
+            Alert(
+                title: Text("프로필이 수정되었습니다!"),
+                dismissButton: .default(Text("확인"))
+            )
+        })
         .navigationTitle("설정")
     }
 }

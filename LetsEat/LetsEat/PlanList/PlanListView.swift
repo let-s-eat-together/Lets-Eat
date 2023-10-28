@@ -23,9 +23,13 @@ struct PlanListView: View {
                         }
                         .listRowSeparator(.hidden)
                     }
+                    Color.clear.frame(height: 100)
+                        .listRowBackground(Color.clear)
+                        .listRowSeparator(.hidden)
                 }
                 .listStyle(.inset)
                 .scrollContentBackground(.hidden)
+                .scrollIndicators(.hidden)
                 .navigationTitle("밥 함 묵자")
                 .toolbar {
                     NavigationLink {
@@ -44,7 +48,6 @@ struct PlanListView: View {
                 .refreshable {
                     planManager.fetchPlans()
                 }
-                
                 .zIndex(0)
                 
                 HStack {

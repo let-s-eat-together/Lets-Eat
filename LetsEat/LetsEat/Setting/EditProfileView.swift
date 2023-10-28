@@ -8,11 +8,12 @@ import Alamofire
 struct EditProfileView: View {
     @State private var isOK: Bool = false
     @State private var showAlert = false
+    @Binding var isChanged: Bool
     @State var userManager = UserManager.shared
     @State var username: String = ""
     
     let regex = "^[^\\s]+$"
-
+    
     @Environment(\.presentationMode) var presentationMode
     
     
@@ -62,6 +63,7 @@ struct EditProfileView: View {
             
             Button {
                 if isOK {
+                    isChanged = true
                     let nickname = username
                     updateNickname(nickname)
                     presentationMode.wrappedValue.dismiss()
@@ -105,11 +107,11 @@ struct EditProfileView: View {
         .responseData { response in
             debugPrint(response)
             switch response.result {
-                case .success:
-                    print("이름이 변경되었습니다.")
-                    userManager.setName(name: username)
-                case .failure:
-                    print(response.error.debugDescription)
+            case .success:
+                print("이름이 변경되었습니다.")
+                userManager.setName(name: username)
+            case .failure:
+                print(response.error.debugDescription)
             }
         }
     }
@@ -117,6 +119,6 @@ struct EditProfileView: View {
 
 struct EditProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        EditProfileView()
+        EditProfileView(isChanged: .constant(false))
     }
 }
