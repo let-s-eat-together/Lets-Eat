@@ -1,9 +1,6 @@
 //
 //  QRCodeImageView.swift
 //  LetsEat
-//
-//  Created by 이현재 on 2023/08/31.
-//
 
 import SwiftUI
 import CoreImage.CIFilterBuiltins
@@ -27,14 +24,15 @@ struct QRCodeImage {
 
 struct QRCodeImageView: View {
     @EnvironmentObject var appState: AppState
-    @Environment(\.dismiss) private var dismiss
+    @State var userManager = UserManager.shared
     
-    var userId = UUID().uuidString
     @Binding var expirationDate: Date
     
     var body: some View {
         VStack {
-            Image(uiImage: QRCodeImage().generateQRCode(from: "\(expirationDate)"))
+            let expirationDate = self.expirationDate.ymdFormat()
+            let userId = userManager.userInfo.id
+            Image(uiImage: QRCodeImage().generateQRCode(from: "\(expirationDate)\n\(userId)"))
                 .interpolation(.none)
                 .resizable()
                 .scaledToFit()
@@ -43,7 +41,6 @@ struct QRCodeImageView: View {
             
             Button {
                 appState.rootViewId = UUID()
-//                dismiss()
             } label: {
                 Text("완료")
                     .font(.system(size: 20))
@@ -58,6 +55,6 @@ struct QRCodeImageView: View {
 
 struct QRCodeImageView_Previews: PreviewProvider {
     static var previews: some View {
-        QRCodeImageView(expirationDate: .constant(Date()))
+        QRCodeImageView(expirationDate: .constant(Calendar.current.date(from: DateComponents(year: 2023, month: 11, day: 1)) ?? Date.now))
     }
 }

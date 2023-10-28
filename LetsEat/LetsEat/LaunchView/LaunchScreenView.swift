@@ -1,9 +1,6 @@
 //
 //  LaunchScreenView.swift
 //  LetsEat
-//
-//  Created by CNU on 2023/08/31.
-//
 
 import SwiftUI
 
