@@ -1,47 +1,65 @@
 //
 //  MessageView.swift
 //  LetsEat
-//
-//  Created by 이현재 on 2023/08/28.
-//
 
 import SwiftUI
 
 struct MessageView: View {
-    @State var dataManager = DataManager.shared
-    
-    @State private var messageList: [Message] = []
+    @State var messageManager = MessageManager.shared
     
     var body: some View {
+        @State var messageList = messageManager.messageList
         List {
-            ForEach(dataManager.getMessageDummyData(), id: \.self) { item in
+            ForEach(messageList, id: \.id) { item in
                 HStack {
                     VStack(alignment: .leading) {
                         Text("콕 찔러보기")
                             .font(.system(.caption))
                         
-                        Text("\(item.senderName)님이 회원님을 콕 찔렀습니다!")
+                        Text("\(item.otherUserName)님이 \(item.countSting)번 콕 찔렀습니다!")
                     }
                     
                     Spacer()
                     
                     VStack {
-                        Text("~m ago")
+                        Text(timeElapsedString(for: item.creationDate.toDateTime() ?? Date.now))
+                            .font(.system(.caption))
+                            .foregroundColor(.gray)
                     }
                     .padding()
                 }
-                .navigationTitle("알림")
             }
-            .onDelete(perform: removeList)
+            //            .onDelete(perform: removeList)
         }
-        .toolbar {
-            EditButton()
+        .navigationTitle("알림")
+        
+        .refreshable {
+            messageManager.fetchMessages()
         }
-
+//        .toolbar {
+//            EditButton()
+//        }
+        
     }
     
-    func removeList(at offsets: IndexSet) {
-        messageList.remove(atOffsets: offsets)
+    //    func removeList(at offsets: IndexSet) {
+    //        messageManager.messageList.remove(atOffsets: offsets)
+    //    }
+    
+    func timeElapsedString(for date: Date) -> String {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.day, .hour, .minute],
+                                                 from: date, to: Date())
+        
+        if let days = components.day, days > 0 {
+            return "\(days)d ago"
+        } else if let hours = components.hour, hours > 0 {
+            return "\(hours)h ago"
+        } else if let minutes = components.minute, minutes > 0 {
+            return "\(minutes)m ago"
+        } else {
+            return "now"
+        }
     }
 }
 
