@@ -8,6 +8,7 @@ import Alamofire
 struct SettingView: View {
     @AppStorage("isDarkModeOn") private var isDarkModeOn = false
     
+
     @StateObject var userManager = UserManager.shared
   
     @State private var isAlarmOn: Bool = false
