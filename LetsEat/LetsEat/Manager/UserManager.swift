@@ -36,5 +36,9 @@ class UserManager: ObservableObject {
     func setName(name username: String) {
         userInfo.username = username
     }
+    
+    func getName() -> String {
+        return userInfo.username
+    }
 }
 
