@@ -35,8 +35,6 @@ struct WithdrawalButton: View {
     func deleteAccount() {
         let url = "http://34.22.94.135:8080/deleteUser"
         
-        let params: Parameters = ["user_id": userManager.userInfo.id]
-        
         let accessToken = userManager.userInfo.token
         
         let headers: HTTPHeaders = [
@@ -46,7 +44,6 @@ struct WithdrawalButton: View {
         
         AF.request(url,
                    method: .put,
-                   parameters: params,
                    encoding: URLEncoding.default,
                    headers: headers)
         .validate(statusCode: 200..<600)
