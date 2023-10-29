@@ -39,7 +39,7 @@ Swift, SwiftUI, Java, Spring Boot, MySQL, Google Cloud, Github
 
 
 ## 📚 Documentation
-[Notion] (https://www.notion.so/36c80501c7534f3882a8324ff9c120dd?v=016bed8ec41e44979099534eaa8a19a0&pvs=4)
+[Notion](https://nonstop-bromine-732.notion.site/SW-8-23bcd323eb2a4f35b073a473e5f0208b)
 
 
 ## ✏️ API 명세서
