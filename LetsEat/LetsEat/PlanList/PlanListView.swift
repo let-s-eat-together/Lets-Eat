@@ -69,7 +69,7 @@ struct planItem: View {
     
     var body: some View {
         HStack {
-            Image("discord")
+            Image("profile")
                 .resizable()
                 .scaledToFit()
                 .frame(height: 40)
